@@ -1,16 +1,17 @@
-import 'package:bmi_check/app/mobile/home/controller/sex_selection_widget_controller.dart';
+import 'package:bmi_check/app/mobile/home/components/sex/enum/sex_enum.dart';
+import 'package:bmi_check/app/mobile/home/components/sex/sex_selection_widget_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SexSelectionWidget extends StatefulWidget {
-  const SexSelectionWidget({super.key});
+  const SexSelectionWidget({required this.sexSelected, super.key});
+  final SexSelected sexSelected;
 
   @override
   State<SexSelectionWidget> createState() => _SexSelectionWidgetState();
 }
 
 class _SexSelectionWidgetState extends State<SexSelectionWidget> {
-  SexSelected selected = SexSelected();
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
@@ -23,10 +24,10 @@ class _SexSelectionWidgetState extends State<SexSelectionWidget> {
       children: [
         //FEMININE
         ValueListenableBuilder(
-          valueListenable: selected,
+          valueListenable: widget.sexSelected,
           builder: (context, value, child) {
             return GestureDetector(
-              onTap: selected.feminine,
+              onTap: widget.sexSelected.feminine,
               child: Container(
                 margin: const EdgeInsets.only(right: 15),
                 padding:
@@ -65,10 +66,10 @@ class _SexSelectionWidgetState extends State<SexSelectionWidget> {
         ),
         //MASCULINE
         ValueListenableBuilder(
-          valueListenable: selected,
+          valueListenable: widget.sexSelected,
           builder: (context, value, child) {
             return GestureDetector(
-              onTap: selected.masculine,
+              onTap: widget.sexSelected.masculine,
               child: Container(
                 margin: const EdgeInsets.only(left: 15),
                 padding:

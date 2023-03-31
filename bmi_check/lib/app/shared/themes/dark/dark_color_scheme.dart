@@ -14,7 +14,7 @@ const darkColorScheme = ColorScheme(
   onTertiary: Color.fromARGB(255, 87, 217, 53), //check
   tertiaryContainer: Color.fromARGB(255, 250, 251, 240), //check
   onTertiaryContainer: Color.fromARGB(255, 49, 57, 83), //check
-  error: Color.fromARGB(255, 179, 38, 30), //check
+  error: Color.fromARGB(255, 255, 56, 45), //check
   onError: Color.fromARGB(255, 255, 255, 255), //check
   errorContainer: Color.fromARGB(255, 65, 14, 11),  //check
   onErrorContainer: Color.fromARGB(255, 249, 222, 220), //check

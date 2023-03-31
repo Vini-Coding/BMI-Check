@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class WeightController extends ValueNotifier<double> {
   WeightController() : super(0);
 
-  TextEditingController weightController = TextEditingController();
+  TextEditingController weightTextField = TextEditingController();
 
   void increment() {
     value++;
-    weightController.text = value.toInt().toString();
+    weightTextField.text = value.toInt().toString();
   }
 
   void decrement() {
     if (value > 0) {
       value--;
-      weightController.text = value.toInt().toString();
+      weightTextField.text = value.toInt().toString();
     } else {
       null;
     }
@@ -24,18 +24,18 @@ class WeightController extends ValueNotifier<double> {
       value = 0;
     } else {
       value = double.parse(valueController);
-      weightController.text = value.toString();
+      weightTextField.text = value.toString();
     }
   }
 
   //IS NOT WORKING
   void weightChanged(String valueController) {
-    if (weightController.text.isEmpty) {
-      weightController.text = 0.toString();
-      value = double.parse(weightController.text);
+    if (weightTextField.text.isEmpty) {
+      weightTextField.text = 0.toString();
+      value = double.parse(weightTextField.text);
     } else {
       value = double.parse(valueController);
-      weightController.text = value.toString();
+      weightTextField.text = value.toString();
     }
   }
 }

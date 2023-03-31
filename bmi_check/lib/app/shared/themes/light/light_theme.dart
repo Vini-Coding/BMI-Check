@@ -14,9 +14,9 @@ ThemeData lightTheme = ThemeData(
       color: lightColorScheme.outline,
     ),
     displayMedium: TextStyle(
-      fontSize: 22,
+      fontSize: 120,
       fontFamily: 'PatuaOne',
-      color: lightColorScheme.outline,
+      color: lightColorScheme.primary,
     ),
     bodyLarge: TextStyle(
       fontSize: 20,
@@ -50,5 +50,4 @@ ThemeData lightTheme = ThemeData(
     inactiveTickMarkColor: lightColorScheme.outline,
     inactiveTrackColor: lightColorScheme.outline,
   ),
-  
 );

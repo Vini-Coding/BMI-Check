@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class AgeController extends ValueNotifier<int> {
   AgeController() : super(0);
 
-  TextEditingController ageController = TextEditingController();
+  TextEditingController ageTextField = TextEditingController();
 
   void increment() {
     value++;
-    ageController.text = value.toInt().toString();
+    ageTextField.text = value.toInt().toString();
   }
 
   void decrement() {
     if (value > 0) {
       value--;
-      ageController.text = value.toInt().toString();
+      ageTextField.text = value.toInt().toString();
     } else {
       null;
     }
@@ -24,7 +24,7 @@ class AgeController extends ValueNotifier<int> {
       value = 0;
     } else {
       value = int.parse(valueController);
-      ageController.text = value.toString();
+      ageTextField.text = value.toString();
     }
   }
 }

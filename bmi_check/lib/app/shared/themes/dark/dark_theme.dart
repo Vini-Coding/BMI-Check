@@ -14,9 +14,9 @@ ThemeData darkTheme = ThemeData(
       color: darkColorScheme.outline,
     ),
     displayMedium: TextStyle(
-      fontSize: 22,
+      fontSize: 120,
       fontFamily: 'PatuaOne',
-      color: darkColorScheme.outline,
+      color: darkColorScheme.primary,
     ),
     bodyLarge: TextStyle(
       fontSize: 20,

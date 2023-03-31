@@ -1,23 +1,22 @@
-import 'package:bmi_check/app/mobile/home/controller/age_controller.dart';
+import 'package:bmi_check/app/mobile/home/components/age/age_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AgeWidget extends StatefulWidget {
-  const AgeWidget({super.key});
+  const AgeWidget({required this.age, super.key});
+  final AgeController age;
 
   @override
   State<AgeWidget> createState() => _AgeWidgetState();
 }
 
 class _AgeWidgetState extends State<AgeWidget> {
-  AgeController age = AgeController();
- 
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     return ValueListenableBuilder(
-      valueListenable: age,
+      valueListenable: widget.age,
       builder: (context, value, child) {
         return Container(
           height: 160,
@@ -37,7 +36,7 @@ class _AgeWidgetState extends State<AgeWidget> {
                   style: textTheme.bodyMedium,
                 ),
                 TextField(
-                  controller: age.ageController,
+                  controller: widget.age.ageTextField,
                   keyboardType: TextInputType.number,
                   style: textTheme.displayLarge!.copyWith(fontSize: 44),
                   textAlign: TextAlign.center,
@@ -46,7 +45,8 @@ class _AgeWidgetState extends State<AgeWidget> {
                     hintText: value.toInt().toString(),
                     hintStyle: textTheme.displayLarge!.copyWith(fontSize: 44),
                   ),
-                  onSubmitted: (String controller) => age.ageSubmitted(controller), 
+                  onSubmitted: (String controller) =>
+                      widget.age.ageSubmitted(controller),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,20 +55,20 @@ class _AgeWidgetState extends State<AgeWidget> {
                       backgroundColor: colorScheme.primary,
                       child: IconButton(
                         icon: FaIcon(
-                          FontAwesomeIcons.plus,
+                          FontAwesomeIcons.minus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: age.increment,
+                        onPressed: widget.age.decrement,
                       ),
                     ),
                     CircleAvatar(
                       backgroundColor: colorScheme.primary,
                       child: IconButton(
                         icon: FaIcon(
-                          FontAwesomeIcons.minus,
+                          FontAwesomeIcons.plus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: age.decrement,
+                        onPressed: widget.age.increment,
                       ),
                     ),
                   ],

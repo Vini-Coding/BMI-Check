@@ -1,9 +1,5 @@
+import 'package:bmi_check/app/mobile/home/components/sex/enum/sex_enum.dart';
 import 'package:flutter/material.dart';
-
-enum Sex {
-  masculine,
-  feminine,
-}
 
 class SexSelected extends ValueNotifier<Sex?> {
   SexSelected() : super(null);
@@ -16,3 +12,5 @@ class SexSelected extends ValueNotifier<Sex?> {
     value = Sex.feminine;
   }
 }
+
+

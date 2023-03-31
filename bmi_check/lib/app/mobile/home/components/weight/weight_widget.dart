@@ -1,23 +1,22 @@
-import 'package:bmi_check/app/mobile/home/controller/weight_controller.dart';
+import 'package:bmi_check/app/mobile/home/components/weight/weight_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class WeightWidget extends StatefulWidget {
-  const WeightWidget({super.key});
+  const WeightWidget({required this.weight, super.key});
+  final WeightController weight;
 
   @override
   State<WeightWidget> createState() => _WeightWidgetState();
 }
 
 class _WeightWidgetState extends State<WeightWidget> {
-  WeightController weight = WeightController();
-
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     return ValueListenableBuilder(
-      valueListenable: weight,
+      valueListenable: widget.weight,
       builder: (context, value, child) {
         return Container(
           height: 160,
@@ -46,7 +45,7 @@ class _WeightWidgetState extends State<WeightWidget> {
                   ],
                 ),
                 TextField(
-                  controller: weight.weightController,
+                  controller: widget.weight.weightTextField,
                   keyboardType: TextInputType.number,
                   style: textTheme.displayLarge!.copyWith(fontSize: 44),
                   textAlign: TextAlign.center,
@@ -56,7 +55,7 @@ class _WeightWidgetState extends State<WeightWidget> {
                     hintStyle: textTheme.displayLarge!.copyWith(fontSize: 44),
                   ),
                   onSubmitted: (String controller) =>
-                      weight.weightSubmitted(controller),
+                      widget.weight.weightSubmitted(controller),
                   // onChanged: (String controller) =>
                   //     weight.weightChanged(controller),
                 ),
@@ -67,20 +66,20 @@ class _WeightWidgetState extends State<WeightWidget> {
                       backgroundColor: colorScheme.primary,
                       child: IconButton(
                         icon: FaIcon(
-                          FontAwesomeIcons.plus,
+                          FontAwesomeIcons.minus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: weight.increment,
+                        onPressed: widget.weight.decrement,
                       ),
                     ),
                     CircleAvatar(
                       backgroundColor: colorScheme.primary,
                       child: IconButton(
                         icon: FaIcon(
-                          FontAwesomeIcons.minus,
+                          FontAwesomeIcons.plus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: weight.decrement,
+                        onPressed: widget.weight.increment,
                       ),
                     ),
                   ],
