@@ -1,10 +1,14 @@
+import 'package:bmi_check/app/mobile/home/components/height/exceptions/over_height_limit.dart';
 import 'package:bmi_check/app/mobile/home/components/height/height_selection_controller.dart';
+import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
+import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HeightSelectionWidget extends StatefulWidget {
-  const HeightSelectionWidget({required this.height, super.key});
-  final HeightSelectionController height;
+  const HeightSelectionWidget(
+      {required this.heightSelectionController, super.key});
+  final HeightSelectionController heightSelectionController;
 
   @override
   State<HeightSelectionWidget> createState() => _HeightSelectionWidgetState();
@@ -15,10 +19,12 @@ class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    double minHeight = widget.heightSelectionController.minHeight;
+    double maxHeight = widget.heightSelectionController.maxHeight;
 
     return ValueListenableBuilder(
-      valueListenable: widget.height,
-      builder: (context, value, child) {
+      valueListenable: widget.heightSelectionController,
+      builder: (context, height, child) {
         return Container(
           height: 160,
           width: double.maxFinite,
@@ -31,18 +37,37 @@ class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      value.toStringAsPrecision(3),
-                      style: textTheme.displayLarge,
+                Flexible(
+                  child: SizedBox(
+                    child: TextField(
+                      controller:
+                          widget.heightSelectionController.heightTextField,
+                      keyboardType: TextInputType.number,
+                      style: textTheme.displayLarge!.copyWith(fontSize: 50),
+                      textAlign: TextAlign.center,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                      ),
+                      onSubmitted: (String heightSubmitted) {
+                        try {
+                          widget.heightSelectionController.height =
+                              double.tryParse(
+                            heightSubmitted,
+                          );
+                        } on HandledException catch (exception) {
+                          if (exception is OverHeightLimitException) {
+                            widget.heightSelectionController.height = maxHeight;
+                          } else {
+                            widget.heightSelectionController.height = minHeight;
+                          }
+                          showErrorSnackBar(
+                            context: context,
+                            exceptionText: exception.toString(),
+                          );
+                        }
+                      },
                     ),
-                    Text(
-                      'm',
-                      style: textTheme.displayLarge,
-                    ),
-                  ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -56,16 +81,17 @@ class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
                           color: colorScheme.surfaceVariant,
                           size: 18,
                         ),
-                        onPressed: widget.height.decrement,
+                        onPressed: widget.heightSelectionController.decrement,
                       ),
                     ),
                     Expanded(
                       child: Slider(
-                        value: value.toDouble(),
-                        min: 1.00,
-                        max: 2.50,
-                        onChanged: (double sliderValue) =>
-                            widget.height.onChanged(sliderValue),
+                        value: height!.toDouble(),
+                        min: minHeight,
+                        max: maxHeight,
+                        onChanged: (double sliderValue) => widget
+                            .heightSelectionController
+                            .onChanged(sliderValue),
                       ),
                     ),
                     CircleAvatar(
@@ -77,7 +103,7 @@ class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
                           color: colorScheme.surfaceVariant,
                           size: 18,
                         ),
-                        onPressed: widget.height.increment,
+                        onPressed: widget.heightSelectionController.increment,
                       ),
                     ),
                   ],

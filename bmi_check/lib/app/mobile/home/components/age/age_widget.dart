@@ -1,10 +1,13 @@
 import 'package:bmi_check/app/mobile/home/components/age/age_controller.dart';
+import 'package:bmi_check/app/mobile/home/components/age/exceptions/over_age_limit_exception.dart';
+import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
+import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AgeWidget extends StatefulWidget {
-  const AgeWidget({required this.age, super.key});
-  final AgeController age;
+  const AgeWidget({required this.ageController, super.key});
+  final AgeController ageController;
 
   @override
   State<AgeWidget> createState() => _AgeWidgetState();
@@ -15,9 +18,12 @@ class _AgeWidgetState extends State<AgeWidget> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    int minAge = widget.ageController.minAge;
+    int maxAge = widget.ageController.maxAge;
+
     return ValueListenableBuilder(
-      valueListenable: widget.age,
-      builder: (context, value, child) {
+      valueListenable: widget.ageController,
+      builder: (context, age, child) {
         return Container(
           height: 160,
           width: 160,
@@ -36,17 +42,28 @@ class _AgeWidgetState extends State<AgeWidget> {
                   style: textTheme.bodyMedium,
                 ),
                 TextField(
-                  controller: widget.age.ageTextField,
+                  controller: widget.ageController.ageTextField,
                   keyboardType: TextInputType.number,
                   style: textTheme.displayLarge!.copyWith(fontSize: 44),
                   textAlign: TextAlign.center,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: value.toInt().toString(),
-                    hintStyle: textTheme.displayLarge!.copyWith(fontSize: 44),
                   ),
-                  onSubmitted: (String controller) =>
-                      widget.age.ageSubmitted(controller),
+                  onSubmitted: (String ageSubmitted) {
+                    try {
+                      widget.ageController.age = int.tryParse(ageSubmitted);
+                    } on HandledException catch (exception) {
+                      if (exception is OverAgeLimitException) {
+                        widget.ageController.age = maxAge;
+                      } else {
+                        widget.ageController.age = minAge;
+                      }
+                      showErrorSnackBar(
+                        context: context,
+                        exceptionText: exception.toString(),
+                      );
+                    }
+                  },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -58,7 +75,7 @@ class _AgeWidgetState extends State<AgeWidget> {
                           FontAwesomeIcons.minus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: widget.age.decrement,
+                        onPressed: widget.ageController.decrement,
                       ),
                     ),
                     CircleAvatar(
@@ -68,7 +85,7 @@ class _AgeWidgetState extends State<AgeWidget> {
                           FontAwesomeIcons.plus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: widget.age.increment,
+                        onPressed: widget.ageController.increment,
                       ),
                     ),
                   ],

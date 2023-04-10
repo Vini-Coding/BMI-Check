@@ -49,6 +49,7 @@ class _ResultPageState extends State<ResultPage> {
                 Screenshot(
                   controller: resultController.screenshotController,
                   child: Container(
+                    padding: const EdgeInsets.all(20),
                     color: colorScheme.background,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

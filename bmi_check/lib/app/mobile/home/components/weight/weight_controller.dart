@@ -1,41 +1,51 @@
+import 'package:bmi_check/app/mobile/home/components/weight/exceptions/null_weight_exception.dart';
+import 'package:bmi_check/app/mobile/home/components/weight/exceptions/over_weight_limit_exception.dart';
+import 'package:bmi_check/app/mobile/home/components/weight/exceptions/under_weight_limit_exception.dart';
 import 'package:flutter/material.dart';
 
-class WeightController extends ValueNotifier<double> {
+class WeightController extends ValueNotifier<double?> {
   WeightController() : super(0);
 
-  TextEditingController weightTextField = TextEditingController();
+  double minWeight = 0;
+  double maxWeight = 600;
 
-  void increment() {
-    value++;
-    weightTextField.text = value.toInt().toString();
+  late TextEditingController weightTextField = TextEditingController(
+    text: minWeight.toStringAsPrecision(3),
+  );
+
+  double? get weight {
+    return value;
   }
 
-  void decrement() {
-    if (value > 0) {
-      value--;
-      weightTextField.text = value.toInt().toString();
+  set weight(double? weight) {
+    weightValidate(weight.toString());
+    value = weight!;
+    weightTextField.text = weight.toStringAsPrecision(3);
+  }
+
+  void increment() {
+    if (weight! <= 600) {
+      weight = weight! + 1;
     } else {
       null;
     }
   }
 
-  void weightSubmitted(String valueController) {
-    if (valueController == '') {
-      value = 0;
+  void decrement() {
+    if (weight! > 0) {
+      weight = weight! - 1;
     } else {
-      value = double.parse(valueController);
-      weightTextField.text = value.toString();
+      null;
     }
   }
 
-  //IS NOT WORKING
-  void weightChanged(String valueController) {
-    if (weightTextField.text.isEmpty) {
-      weightTextField.text = 0.toString();
-      value = double.parse(weightTextField.text);
-    } else {
-      value = double.parse(valueController);
-      weightTextField.text = value.toString();
+  void weightValidate(String valueController) {
+    if (valueController.isEmpty || double.tryParse(valueController) == null) {
+      throw NullWeightException();
+    } else if (double.tryParse(valueController)! < minWeight) {
+      throw UnderWeightLimitException();
+    } else if (double.tryParse(valueController)! > maxWeight) {
+      throw OverWeightLimitException();
     }
   }
 }

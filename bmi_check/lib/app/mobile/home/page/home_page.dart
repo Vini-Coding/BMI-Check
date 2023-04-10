@@ -6,6 +6,7 @@ import 'package:bmi_check/app/mobile/home/components/weight/weight_widget.dart';
 import 'package:bmi_check/app/mobile/home/controller/home_controller.dart';
 import 'package:bmi_check/app/mobile/result/args/result_arguments.dart';
 import 'package:bmi_check/app/mobile/result/page/result_page.dart';
+import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     void goToResult() {
       Navigator.pushReplacementNamed(
@@ -38,10 +38,9 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    // TODO: SettingsPage isn't build yet
-    // void goToSettings() {
-    //   Navigator.pushReplacementNamed(context, SettingsPage.routeName);
-    // }
+    void goToSettings() {
+      Navigator.pushReplacementNamed(context, SettingsPage.routeName);
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -61,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                       Text('BMI\nCheck', style: textTheme.displayLarge),
                       IconButton(
                         icon: const FaIcon(FontAwesomeIcons.gear, size: 34),
-                        onPressed: () {},
+                        onPressed: goToSettings,
                       ),
                     ],
                   ),
@@ -80,14 +79,26 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.only(
                       top: 10, bottom: 5, left: 30, right: 30),
-                  child:
-                      Text('Select your height', style: textTheme.bodyMedium),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Select your height in ',
+                        style: textTheme.bodyMedium,
+                      ),
+                      Text(
+                        'meters:',
+                        style: textTheme.bodyMedium!
+                            .copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                   child: HeightSelectionWidget(
-                      height: controller.heightController),
+                      heightSelectionController: controller.heightController),
                 ),
                 Padding(
                   padding:
@@ -95,8 +106,9 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AgeWidget(age: controller.ageController),
-                      WeightWidget(weight: controller.weightController),
+                      AgeWidget(ageController: controller.ageController),
+                      WeightWidget(
+                          weightController: controller.weightController),
                     ],
                   ),
                 ),

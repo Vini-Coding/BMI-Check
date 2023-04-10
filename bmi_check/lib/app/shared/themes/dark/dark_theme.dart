@@ -50,4 +50,7 @@ ThemeData darkTheme = ThemeData(
     inactiveTickMarkColor: darkColorScheme.onSurfaceVariant,
     inactiveTrackColor: darkColorScheme.onSurfaceVariant,
   ),
+  radioTheme: RadioThemeData(
+    fillColor: MaterialStateProperty.all(darkColorScheme.outline),
+  )
 );

@@ -1,10 +1,13 @@
+import 'package:bmi_check/app/mobile/home/components/weight/exceptions/over_weight_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/weight/weight_controller.dart';
+import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
+import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class WeightWidget extends StatefulWidget {
-  const WeightWidget({required this.weight, super.key});
-  final WeightController weight;
+  const WeightWidget({required this.weightController, super.key});
+  final WeightController weightController;
 
   @override
   State<WeightWidget> createState() => _WeightWidgetState();
@@ -15,9 +18,12 @@ class _WeightWidgetState extends State<WeightWidget> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    double minWeight = widget.weightController.minWeight;
+    double maxWeight = widget.weightController.maxWeight;
+
     return ValueListenableBuilder(
-      valueListenable: widget.weight,
-      builder: (context, value, child) {
+      valueListenable: widget.weightController,
+      builder: (context, weight, child) {
         return Container(
           height: 160,
           width: 160,
@@ -40,24 +46,36 @@ class _WeightWidgetState extends State<WeightWidget> {
                     ),
                     Text(
                       ' (kg)',
-                      style: textTheme.bodyMedium,
+                      style: textTheme.bodyMedium!
+                          .copyWith(fontWeight: FontWeight.w800),
                     ),
                   ],
                 ),
                 TextField(
-                  controller: widget.weight.weightTextField,
+                  controller: widget.weightController.weightTextField,
                   keyboardType: TextInputType.number,
                   style: textTheme.displayLarge!.copyWith(fontSize: 44),
                   textAlign: TextAlign.center,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: value.toInt().toString(),
-                    hintStyle: textTheme.displayLarge!.copyWith(fontSize: 44),
                   ),
-                  onSubmitted: (String controller) =>
-                      widget.weight.weightSubmitted(controller),
-                  // onChanged: (String controller) =>
-                  //     weight.weightChanged(controller),
+                  onSubmitted: (String submittedText) {
+                    try {
+                      widget.weightController.weight = double.tryParse(
+                        submittedText,
+                      );
+                    } on HandledException catch (exception) {
+                      if (exception is OverWeightLimitException) {
+                        widget.weightController.weight = maxWeight;
+                      } else {
+                        widget.weightController.weight = minWeight;
+                      }
+                      showErrorSnackBar(
+                        context: context,
+                        exceptionText: exception.toString(),
+                      );
+                    }
+                  },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -69,7 +87,7 @@ class _WeightWidgetState extends State<WeightWidget> {
                           FontAwesomeIcons.minus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: widget.weight.decrement,
+                        onPressed: widget.weightController.decrement,
                       ),
                     ),
                     CircleAvatar(
@@ -79,7 +97,7 @@ class _WeightWidgetState extends State<WeightWidget> {
                           FontAwesomeIcons.plus,
                           color: colorScheme.surfaceVariant,
                         ),
-                        onPressed: widget.weight.increment,
+                        onPressed: widget.weightController.increment,
                       ),
                     ),
                   ],

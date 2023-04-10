@@ -1,5 +1,5 @@
 abstract class Obesity3Result {
   static const title = "Grade 3 of Obesity";
   static const description =
-      "Grade 3 of Obesity. Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose and other factors; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart disease, such as coronary heart disease and heart failure; sleep apnea; liver diseases such as steatosis, arthrosis; infertility; some types of cancer, such as breast and colon; anxiety and depression; among others.";
+      "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...";
 }

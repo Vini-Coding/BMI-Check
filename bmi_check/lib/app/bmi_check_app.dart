@@ -1,6 +1,8 @@
 import 'package:bmi_check/app/mobile/home/page/home_page.dart';
 import 'package:bmi_check/app/mobile/intro/page/intro_page.dart';
 import 'package:bmi_check/app/mobile/result/page/result_page.dart';
+import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
+import 'package:bmi_check/app/mobile/settings/page/theme_settings/theme_settings_page.dart';
 import 'package:bmi_check/app/shared/themes/dark/dark_theme.dart';
 import 'package:bmi_check/app/shared/themes/light/light_theme.dart';
 import 'package:bmi_check/app/shared/themes/theme_controller.dart';
@@ -21,11 +23,13 @@ class BmiCheckApp extends StatelessWidget {
           theme: lightTheme,
           darkTheme: darkTheme,
           themeMode: value,
-          initialRoute: IntroPage.routeName,
+          initialRoute: HomePage.routeName,
           routes: {
-            //IntroPage.routeName: (context) => const IntroPage(),
+            IntroPage.routeName: (context) => const IntroPage(),
             HomePage.routeName: (context) => const HomePage(),
             ResultPage.routeName: (context) => const ResultPage(),
+            SettingsPage.routeName:(context) => const SettingsPage(),
+            ThemeSettingsPage.routeName: (context) => const ThemeSettingsPage(),
           },
         );
       },
