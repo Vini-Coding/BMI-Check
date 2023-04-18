@@ -2,6 +2,8 @@ import 'package:bmi_check/app/mobile/home/components/sex/enum/sex_enum.dart';
 import 'package:bmi_check/app/mobile/home/components/sex/sex_selection_widget_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SexSelectionWidget extends StatefulWidget {
   const SexSelectionWidget({required this.sexSelected, super.key});
@@ -50,7 +52,7 @@ class _SexSelectionWidgetState extends State<SexSelectionWidget> {
                       ),
                       const SizedBox(height: 14),
                       Text(
-                        'Feminine',
+                        AppLocalizations.of(context)!.feminineSex,
                         style: textTheme.bodyMedium!.copyWith(
                           color: value == Sex.feminine
                               ? colorScheme.surface
@@ -92,7 +94,7 @@ class _SexSelectionWidgetState extends State<SexSelectionWidget> {
                       ),
                       const SizedBox(height: 14),
                       Text(
-                        'Masculine',
+                        AppLocalizations.of(context)!.masculineSex,
                         style: textTheme.bodyMedium!.copyWith(
                           color: value == Sex.masculine
                               ? colorScheme.surface

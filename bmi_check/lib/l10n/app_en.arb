@@ -1,0 +1,97 @@
+{
+        "language": "English",
+        "@language": {
+                "description":"The current language"
+        },
+
+        "titleIntroPage1": "Welcome to\nBMI Check",
+        "@titleIntroPage1": {
+                "description":"Title of the first Introduction Page."
+        },
+        "bodyIntroPage1": "Discover if you have the ideal body mass index in asimple and fast way and share with your friends",
+        "@bodyIntroPage1": {
+                "description": "Body text of the first Introduction Page."
+        },
+        "titleIntroPage2": "Fill the Data",
+        "@titleIntroPage2": {
+                "description": "Title of the second Introduction Page."
+        },
+        "bodyIntroPage2": "Fill the custom fields of body weight, height, sex and age for BMI Check to calculate your bmi",
+        "@bodyIntroPage2": {
+                "description": "Body text of the second Introduction Page."
+        },
+        "titleIntroPage3": "Increase your\nHealth",
+        "@titleIntroPage3": {
+                "description": "Title of the third Introduction Page."
+        },
+        "bodyIntroPage3": "Use the final result to increase your own health and keep the ideal body mass index",
+        "@bodyIntroPage3": {
+                "description": "Body text of the third Introduction Page."
+        },
+        "skip": "Skip",
+        "@skip": {
+                "description": "Skip"
+        },
+        "getStartedButton": "Get Started",
+        "@skip": {
+                "description": "Get Started button"
+        },
+        
+        "appTitle": "BMI\nCheck", 
+        "selectSexPrompt": "Select your sex",
+        "feminineSex": "Feminine",
+        "masculineSex": "Masculine",
+        "selectHeightPrompt": "Select your height in",
+        "heightMetric": " meters:",
+        "age": "Age",
+        "weight": "Weight",
+        "weightMetric": " (kg)",
+        "calculateButton": "Calculate",
+        
+        "unselectedSexException": "Choose your sex",
+        "emptyAgeException":"Insert a valid age",
+        "emptyWeightException": "Insert a valid weight",        
+        "nullAgeException": "Insert a valid age",
+        "overAgeLimitException": "The age must be under 120",
+        "underAgeLimitException": "The age must be over 0",
+        "nullHeightException": "Insert a valid height",
+        "overHeightLimitException": "The height must be under 2.50",
+        "underHeightLimitException": "The height must be over 1.00",
+        "nullWeightException": "Insert a valid weight",
+        "overWeightLimitException": "The weight must be under 600",
+        "underWeightLimitException": "The weight must be over 0",
+        
+        "idealResultTitle": "Ideal BMI",
+        "idealResultDescription": "You have the ideal body mass index. In this case, there is harmony between weight and height, that is, with regard to food and health, the person has made correct choices. That's because a balanced diet and enough exercise help keep in shape. \n We recommend you to keep a healthy lifestyle...",
+        "underWeightResultTitle": "Underweight",
+        "underWeightResultDescription": "You are underweight! This index can be caused by a voluntary decision, such as food deprivation, or eating behavior disorders, such as anorexia and bulimia. In addition, can be caused by metabolic diseases, parasites, inflammatory bowel diseases, food intolerances or psychic factors, such as stress.\n We recommend you to search a nutritionist...",
+        "overWeightResultTitle": "Overweight",
+        "overWeightResultDescription": "You are overweight. Being overweight means having more weight than is considered a normal or healthy weight for your age or size. Although an overweight person carries excess weight, he may or may not have excessive fat accumulation. However, you will always be above your ideal weight. \n We recommend you to add more healthy habits in your lifestyle.",
+        "obesity1ResultTitle": "Grade 1 of Obesity",
+        "obesity1ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...",
+        "obesity2ResultTitle": "Grade 2 of Obesity",
+        "obesity2ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...", 
+        "obesity3ResultTitle": "Grade 3 of Obesity",
+        "obesity3ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...",
+        "shareButton": "Share",
+        "shareText": "Look at my BMI! You can check yours in BMI Check!",
+
+
+        "settingsPageTitle": "Settings",
+        "heightMetricsListTile": "Height Metrics",
+        "heightSettingsPageTitle": "Height Metrics\nSettings",
+        "heightSettingsPageTile1": "Inches (inch)",
+        "heightSettingsPageTile2": "Feet (feet)",
+        "heightSettingsPageTile3": "Meters (m)",
+        "heightSettingsPageTile4": "Centimeters (cm)",
+        "weightMetricsListTile": "Weight Metrics",
+        "weightSettingsPageTitle": "Weight Metrics\nSettings",
+        "weightSettingsTile1": "Pounds (lb)",
+        "weightSettingsTile2": "Kilograms (Kg)",
+        "languageSettingsListTile": "Language",
+        "languageSettingsPageTitle": "Language",
+        "themeSettingsListTile": "Theme",
+        "themeSettingsPageTitle": "Theme Settings",
+        "themeSettingsPageTile1": "Light Theme",
+        "themeSettingsPageTile2": "Dark Theme"
+}

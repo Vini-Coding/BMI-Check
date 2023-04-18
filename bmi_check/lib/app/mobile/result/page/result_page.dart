@@ -5,6 +5,7 @@ import 'package:bmi_check/app/mobile/result/controller/result_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResultPage extends StatefulWidget {
   static const routeName = '/result';
@@ -17,12 +18,15 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments
-        as ResultArguments; 
-    ResultController resultController =
-        ResultController(bmi: arguments.bmi, sex: arguments.sex,);
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as ResultArguments;
+    ResultController resultController = ResultController(
+      bmi: arguments.bmi,
+      sex: arguments.sex,
+    );
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
+    String shareText = AppLocalizations.of(context)!.shareText;
 
     void goToHome() {
       Navigator.pushReplacementNamed(context, HomePage.routeName);
@@ -55,7 +59,7 @@ class _ResultPageState extends State<ResultPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          resultController.result.title,
+                          resultController.result.result(context).title,
                           style: textTheme.displayLarge,
                           textAlign: TextAlign.center,
                         ),
@@ -65,7 +69,7 @@ class _ResultPageState extends State<ResultPage> {
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          resultController.result.description,
+                          resultController.result.result(context).description,
                           style: textTheme.bodyMedium,
                           textAlign: TextAlign.center,
                         ),
@@ -77,10 +81,11 @@ class _ResultPageState extends State<ResultPage> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: GeneralButtonWidget(
-                    text: 'Share',
+                    text: AppLocalizations.of(context)!.shareButton,
                     onPressed: () {
-                      double pixelRatio = MediaQuery.of(context).devicePixelRatio;
-                      resultController.onShare(pixelRatio: pixelRatio);
+                      double pixelRatio =
+                          MediaQuery.of(context).devicePixelRatio;
+                      resultController.onShare(pixelRatio: pixelRatio, shareText: shareText);
                     },
                   ),
                 ),

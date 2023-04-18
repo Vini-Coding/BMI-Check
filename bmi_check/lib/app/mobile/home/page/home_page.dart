@@ -11,6 +11,7 @@ import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/';
@@ -57,7 +58,8 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('BMI\nCheck', style: textTheme.displayLarge),
+                      Text(AppLocalizations.of(context)!.appTitle,
+                          style: textTheme.displayLarge),
                       IconButton(
                         icon: const FaIcon(FontAwesomeIcons.gear, size: 34),
                         onPressed: goToSettings,
@@ -68,7 +70,8 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-                  child: Text('Select your sex', style: textTheme.bodyMedium),
+                  child: Text(AppLocalizations.of(context)!.selectSexPrompt,
+                      style: textTheme.bodyMedium),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
@@ -83,11 +86,11 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Select your height in ',
+                        AppLocalizations.of(context)!.selectHeightPrompt,
                         style: textTheme.bodyMedium,
                       ),
                       Text(
-                        'meters:',
+                        AppLocalizations.of(context)!.heightMetric,
                         style: textTheme.bodyMedium!
                             .copyWith(fontWeight: FontWeight.w700),
                       ),
@@ -113,9 +116,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 15, left: 30, right: 30),
+                  padding: const EdgeInsets.only(
+                      top: 15, left: 30, right: 30, bottom: 20),
                   child: GeneralButtonWidget(
-                    text: 'Calculate',
+                    text: AppLocalizations.of(context)!.calculateButton,
                     onPressed: () {
                       try {
                         controller.validate();
@@ -124,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                       } on HandledException catch (exception) {
                         showErrorSnackBar(
                           context: context,
-                          exceptionText: exception.toString(),
+                          exceptionText: exception.parseString(context),
                         );
                       }
                     },

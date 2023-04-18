@@ -1,5 +1,14 @@
-abstract class Obesity1Result {
-  static const title = "Grade 1 of Obesity";
-  static const description =
-      "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...";
+import 'package:bmi_check/app/mobile/result/args/bmi_result_model.dart';
+import 'package:bmi_check/app/mobile/result/results/bmi_result.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class Obesity1Result implements BmiResult {
+  @override
+  BmiResultModel result(BuildContext context) {
+    return BmiResultModel(
+      title: AppLocalizations.of(context)!.obesity1ResultTitle,
+      description: AppLocalizations.of(context)!.obesity1ResultDescription,
+    );
+  }
 }

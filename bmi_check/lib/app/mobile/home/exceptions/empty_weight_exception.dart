@@ -1,8 +1,10 @@
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class EmptyWeightException implements HandledException{
+class EmptyWeightException implements HandledException {
   @override
-  String toString() {
-    return "Insert a valid weight";
+  String parseString(BuildContext context) {
+    return AppLocalizations.of(context)!.emptyWeightException;
   }
 }

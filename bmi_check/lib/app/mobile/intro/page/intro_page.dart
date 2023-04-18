@@ -3,6 +3,7 @@ import 'package:bmi_check/app/mobile/intro/components/intro_page_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IntroPage extends StatefulWidget {
   static const routeName = '/intro';
@@ -28,33 +29,32 @@ class _IntroPageState extends State<IntroPage> {
       isBottomSafeArea: true,
       globalBackgroundColor: Theme.of(context).colorScheme.background,
       scrollPhysics: const BouncingScrollPhysics(),
-      skip: Text('Skip', style: textTheme.labelSmall),
+      skip:
+          Text(AppLocalizations.of(context)!.skip, style: textTheme.labelSmall),
       next: FaIcon(
         FontAwesomeIcons.arrowRightLong,
         color: Theme.of(context).primaryColor,
       ),
       onSkip: goToHome,
-      rawPages: const [
+      rawPages: [
         IntroPageWidget(
           isLastPage: false,
           imagePath: 'assets/vectors/intro1.png',
-          title: 'Welcome to\nBMI Check',
-          bodyText:
-              'Discover if you have the ideal body mass index in a simple and fast way',
+          title: AppLocalizations.of(context)!.titleIntroPage1,
+          bodyText: AppLocalizations.of(context)!.bodyIntroPage1,
         ),
         IntroPageWidget(
           isLastPage: false,
           imagePath: 'assets/vectors/intro2.png',
-          title: 'Fill the Data',
+          title: AppLocalizations.of(context)!.titleIntroPage2,
           bodyText:
-              'Fill the custom fields of body weight and height, sex and age for BMI Check to calculate your bmi',
+              AppLocalizations.of(context)!.bodyIntroPage2,
         ),
         IntroPageWidget(
           isLastPage: true,
           imagePath: 'assets/vectors/intro3.png',
-          title: 'Increase your\nHealth',
-          bodyText:
-              'Use the final result to increase your own health and keep the ideal body mass index',
+          title: AppLocalizations.of(context)!.titleIntroPage3,
+          bodyText: AppLocalizations.of(context)!.bodyIntroPage3,
         ),
       ],
       dotsDecorator: DotsDecorator(

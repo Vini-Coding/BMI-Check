@@ -4,6 +4,8 @@ import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class AgeWidget extends StatefulWidget {
   const AgeWidget({required this.ageController, super.key});
@@ -38,7 +40,7 @@ class _AgeWidgetState extends State<AgeWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'Age',
+                  AppLocalizations.of(context)!.age,
                   style: textTheme.bodyMedium,
                 ),
                 TextField(
@@ -60,7 +62,7 @@ class _AgeWidgetState extends State<AgeWidget> {
                       }
                       showErrorSnackBar(
                         context: context,
-                        exceptionText: exception.toString(),
+                        exceptionText: exception.parseString(context),
                       );
                     }
                   },

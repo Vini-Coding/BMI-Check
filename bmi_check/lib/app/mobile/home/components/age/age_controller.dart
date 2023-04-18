@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bmi_check/app/mobile/home/components/age/exceptions/null_age_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/age/exceptions/over_age_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/age/exceptions/under_age_limit_exception.dart';

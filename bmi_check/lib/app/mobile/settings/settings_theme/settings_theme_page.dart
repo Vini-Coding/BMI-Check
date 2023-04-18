@@ -3,16 +3,18 @@ import 'package:bmi_check/app/shared/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:injector/injector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ThemeSettingsPage extends StatefulWidget {
+
+class SettingsThemePage extends StatefulWidget {
   static const routeName = '/themesettings';
-  const ThemeSettingsPage({super.key});
+  const SettingsThemePage({super.key});
 
   @override
-  State<ThemeSettingsPage> createState() => _ThemeSettingsPageState();
+  State<SettingsThemePage> createState() => _SettingsThemePageState();
 }
 
-class _ThemeSettingsPageState extends State<ThemeSettingsPage> {
+class _SettingsThemePageState extends State<SettingsThemePage> {
   final ThemeController themeController =
       Injector.appInstance.get<ThemeController>();
   int? _value = 1;
@@ -46,13 +48,13 @@ class _ThemeSettingsPageState extends State<ThemeSettingsPage> {
                         ),
                       ),
                     ),
-                    Text('Theme\nSettings', style: textTheme.displayLarge),
+                    Text(AppLocalizations.of(context)!.themeSettingsPageTitle, style: textTheme.displayLarge),
                   ],
                 ),
                 const SizedBox(height: 80),
                 RadioListTile(
                   title: Text(
-                    "Light Theme",
+                    AppLocalizations.of(context)!.themeSettingsPageTile1,
                     style: textTheme.bodyMedium,
                   ),
                   value: 1,
@@ -68,7 +70,7 @@ class _ThemeSettingsPageState extends State<ThemeSettingsPage> {
                 const SizedBox(height: 10),
                 RadioListTile(
                   title: Text(
-                    "Dark Theme",
+                    AppLocalizations.of(context)!.themeSettingsPageTile2,
                     style: textTheme.bodyMedium,
                   ),
                   value: 2,

@@ -4,6 +4,8 @@ import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class WeightWidget extends StatefulWidget {
   const WeightWidget({required this.weightController, super.key});
@@ -41,11 +43,11 @@ class _WeightWidgetState extends State<WeightWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Weight',
+                      AppLocalizations.of(context)!.weight,
                       style: textTheme.bodyMedium,
                     ),
                     Text(
-                      ' (kg)',
+                      AppLocalizations.of(context)!.weightMetric,
                       style: textTheme.bodyMedium!
                           .copyWith(fontWeight: FontWeight.w800),
                     ),
@@ -72,7 +74,7 @@ class _WeightWidgetState extends State<WeightWidget> {
                       }
                       showErrorSnackBar(
                         context: context,
-                        exceptionText: exception.toString(),
+                        exceptionText: exception.parseString(context),
                       );
                     }
                   },

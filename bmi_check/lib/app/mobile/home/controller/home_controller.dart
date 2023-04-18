@@ -14,8 +14,6 @@ class HomeController extends ChangeNotifier {
   WeightController weightController = WeightController();
 
   double bmi = 0;
-  String title = 'Unvalid BMI';
-  String description = 'Go back in Home Page and recalculate!';
 
   void validate() {
     if (sexController.value == null) {

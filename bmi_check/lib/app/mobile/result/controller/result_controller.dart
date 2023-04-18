@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:bmi_check/app/mobile/home/components/sex/enum/sex_enum.dart';
-import 'package:bmi_check/app/mobile/result/controller/bmi_result.dart';
+import 'package:bmi_check/app/mobile/result/results/bmi_result.dart';
 import 'package:bmi_check/app/mobile/result/results/ideal_result.dart';
 import 'package:bmi_check/app/mobile/result/results/obesity1_result.dart';
 import 'package:bmi_check/app/mobile/result/results/obesity2_result.dart';
@@ -27,69 +26,33 @@ class ResultController extends ValueNotifier<double> {
 
   BmiResult resultFemale() {
     if (bmi < 18.6) {
-      return BmiResult(
-        title: UnderweightResult.title,
-        description: UnderweightResult.description,
-      );
+      return UnderweightResult();
     } else if (bmi >= 18.6 && bmi <= 24.9) {
-      return BmiResult(
-        title: IdealResult.title,
-        description: IdealResult.description,
-      );
+      return IdealResult();
     } else if (bmi >= 24.9 && bmi <= 29.9) {
-      return BmiResult(
-        title: OverweightResult.title,
-        description: OverweightResult.description,
-      );
+      return OverweightResult();
     } else if (bmi >= 29.9 && bmi <= 34.9) {
-      return BmiResult(
-        title: Obesity1Result.title,
-        description: Obesity1Result.description,
-      );
+      return Obesity1Result();
     } else if (bmi >= 34.9 && bmi <= 38.9) {
-      return BmiResult(
-        title: Obesity1Result.title,
-        description: Obesity1Result.description,
-      );
+      return Obesity2Result();
     } else {
-      return BmiResult(
-        title: Obesity1Result.title,
-        description: Obesity1Result.description,
-      );
+      return Obesity3Result();
     }
   }
 
   BmiResult resultMale() {
     if (bmi < 19.6) {
-      return BmiResult(
-        title: UnderweightResult.title,
-        description: UnderweightResult.description,
-      );
+      return UnderweightResult();
     } else if (bmi >= 19.6 && bmi <= 25.9) {
-      return BmiResult(
-        title: IdealResult.title,
-        description: IdealResult.description,
-      );
+      return IdealResult();
     } else if (bmi >= 25.9 && bmi <= 30.9) {
-      return BmiResult(
-        title: OverweightResult.title,
-        description: OverweightResult.description,
-      );
+      return OverweightResult();
     } else if (bmi >= 30.9 && bmi <= 35.9) {
-      return BmiResult(
-        title: Obesity1Result.title,
-        description: Obesity1Result.description,
-      );
+      return Obesity1Result();
     } else if (bmi >= 35.9 && bmi <= 39.9) {
-      return BmiResult(
-        title: Obesity2Result.title,
-        description: Obesity2Result.description,
-      );
+      return Obesity2Result();
     } else {
-      return BmiResult(
-        title: Obesity3Result.title,
-        description: Obesity3Result.description,
-      );
+      return Obesity3Result();
     }
   }
 
@@ -100,8 +63,8 @@ class ResultController extends ValueNotifier<double> {
       return resultMale();
     }
   }
-  
-  Future<void> onShare({required double pixelRatio}) async {
+
+  Future<void> onShare({required double pixelRatio, required String shareText}) async {
     final Uint8List? screenshot = await screenshotController.capture(
       pixelRatio: pixelRatio,
       delay: const Duration(milliseconds: 10),
@@ -112,6 +75,7 @@ class ResultController extends ValueNotifier<double> {
     final File imageFile = await File("${directory.path}/mybmi.png").create();
 
     await imageFile.writeAsBytes(screenshot!);
-    await Share.shareXFiles([XFile(imageFile.path)], text: "Look at my BMI! You can check yours in BMI Check!");
+    await Share.shareXFiles([XFile(imageFile.path)],
+        text: shareText);
   }
 }

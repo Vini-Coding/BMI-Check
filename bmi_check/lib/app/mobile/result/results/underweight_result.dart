@@ -1,5 +1,14 @@
-abstract class UnderweightResult {
-  static const title = "UnderWeight";
-  static const description =
-      "You are underweight! This index can be caused by a voluntary decision, such as food deprivation, or eating behavior disorders, such as anorexia and bulimia. In addition, can be caused by metabolic diseases, parasites, inflammatory bowel diseases, food intolerances or psychic factors, such as stress.\n We recommend you to search a nutritionist...";
+import 'package:bmi_check/app/mobile/result/results/bmi_result.dart';
+import 'package:bmi_check/app/mobile/result/args/bmi_result_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class UnderweightResult implements BmiResult {
+  @override
+  BmiResultModel result(BuildContext context) {
+    return BmiResultModel(
+      title: AppLocalizations.of(context)!.underWeightResultTitle,
+      description: AppLocalizations.of(context)!.underWeightResultDescription,
+    );
+  }
 }

@@ -1,8 +1,10 @@
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class OverWeightLimitException implements HandledException{
+class OverWeightLimitException implements HandledException {
   @override
-  String toString() {
-    return "The weight must be under 600";
+  String parseString(BuildContext context) {
+    return AppLocalizations.of(context)!.overWeightLimitException;
   }
 }

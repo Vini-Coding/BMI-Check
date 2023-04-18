@@ -1,5 +1,14 @@
-abstract class IdealResult {
-  static const title = "Ideal BMI";
-  static const description =
-      "You have the ideal body mass index. In this case, there is harmony between weight and height, that is, with regard to food and health, the person has made correct choices. That's because a balanced diet and enough exercise help keep in shape. \n We recommend you to keep a healthy lifestyle...";
+import 'package:bmi_check/app/mobile/result/args/bmi_result_model.dart';
+import 'package:bmi_check/app/mobile/result/results/bmi_result.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class IdealResult implements BmiResult {
+  @override
+  BmiResultModel result(BuildContext context) {
+    return BmiResultModel(
+      title: AppLocalizations.of(context)!.idealResultTitle,
+      description: AppLocalizations.of(context)!.idealResultDescription,
+    );
+  }
 }

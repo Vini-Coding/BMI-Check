@@ -1,5 +1,14 @@
-abstract class OverweightResult {
-  static const title = "Overweight";
-  static const description =
-      "You are overweight. Being overweight means having more weight than is considered a normal or healthy weight for your age or size. Although an overweight person carries excess weight, he may or may not have excessive fat accumulation. However, you will always be above your ideal weight. \n We recommend you to add more healthy habits in your lifestyle.";
+import 'package:bmi_check/app/mobile/result/args/bmi_result_model.dart';
+import 'package:bmi_check/app/mobile/result/results/bmi_result.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class OverweightResult implements BmiResult{
+  @override
+  BmiResultModel result(BuildContext context) {
+    return BmiResultModel(
+      title: AppLocalizations.of(context)!.overWeightResultTitle,
+      description: AppLocalizations.of(context)!.overWeightResultDescription,
+    );
+  }
 }

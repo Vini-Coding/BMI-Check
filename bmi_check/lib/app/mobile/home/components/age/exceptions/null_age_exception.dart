@@ -1,8 +1,10 @@
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class NullAgeException implements HandledException{
+class NullAgeException implements HandledException {
   @override
-  String toString() {
-    return "Insert a valid age";
+  String parseString(BuildContext context) {
+    return AppLocalizations.of(context)!.nullAgeException;
   }
 }

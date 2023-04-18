@@ -1,8 +1,13 @@
 import 'package:bmi_check/app/mobile/home/page/home_page.dart';
 import 'package:bmi_check/app/mobile/settings/components/settings_list_tile_widget.dart';
-import 'package:bmi_check/app/mobile/settings/page/theme_settings/theme_settings_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_height/settings_height_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_language/settings_language_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_theme/settings_theme_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/settings_weight_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/settings';
@@ -16,7 +21,6 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     void goToHome() {
       Navigator.pushReplacementNamed(context, HomePage.routeName);
@@ -43,31 +47,40 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                     ),
-                    Text('Settings', style: textTheme.displayLarge),
+                    Text(AppLocalizations.of(context)!.settingsPageTitle, style: textTheme.displayLarge),
                   ],
                 ),
                 const SizedBox(height: 80),
                 SettingsListTileWidget(
                   icon: FontAwesomeIcons.ruler,
-                  title: 'Height Metrics',
-                  onTap: () {},
+                  title: AppLocalizations.of(context)!.heightMetricsListTile,
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, SettingsHeightPage.routeName);
+                  },
                 ),
                 SettingsListTileWidget(
                   icon: FontAwesomeIcons.weightScale,
-                  title: 'Weight Metrics',
-                  onTap: () {},
+                  title: AppLocalizations.of(context)!.weightMetricsListTile,
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, SettingsWeightPage.routeName);
+                  },
                 ),
                 SettingsListTileWidget(
                   icon: FontAwesomeIcons.globe,
-                  title: 'Language',
-                  onTap: () {},
+                  title: AppLocalizations.of(context)!.languageSettingsListTile,
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, SettingsLanguagePage.routeName);
+                  },
                 ),
                 SettingsListTileWidget(
                   icon: FontAwesomeIcons.sun,
-                  title: 'Theme Settings',
+                  title: AppLocalizations.of(context)!.themeSettingsListTile,
                   onTap: () {
                     Navigator.pushReplacementNamed(
-                        context, ThemeSettingsPage.routeName);
+                        context, SettingsThemePage.routeName);
                   },
                 ),
               ],

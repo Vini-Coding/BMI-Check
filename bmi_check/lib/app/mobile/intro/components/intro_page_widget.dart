@@ -1,6 +1,7 @@
 import 'package:bmi_check/app/mobile/home/page/home_page.dart';
 import 'package:bmi_check/app/mobile/components/general_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IntroPageWidget extends StatelessWidget {
   const IntroPageWidget({
@@ -50,7 +51,10 @@ class IntroPageWidget extends StatelessWidget {
             const SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: GeneralButtonWidget(onPressed: goToHome, text: 'Get Started'),
+              child: GeneralButtonWidget(
+                onPressed: goToHome,
+                text: AppLocalizations.of(context)!.getStartedButton,
+              ),
             ),
           ],
         ),

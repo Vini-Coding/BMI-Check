@@ -1,4 +1,4 @@
-import 'package:bmi_check/app/mobile/home/components/height/exceptions/over_height_limit.dart';
+import 'package:bmi_check/app/mobile/home/components/height/exceptions/over_height_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/height/height_selection_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
@@ -62,7 +62,7 @@ class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
                           }
                           showErrorSnackBar(
                             context: context,
-                            exceptionText: exception.toString(),
+                            exceptionText: exception.parseString(context),
                           );
                         }
                       },
