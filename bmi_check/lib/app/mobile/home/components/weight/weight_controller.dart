@@ -1,13 +1,27 @@
 import 'package:bmi_check/app/mobile/home/components/weight/exceptions/null_weight_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/weight/exceptions/over_weight_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/weight/exceptions/under_weight_limit_exception.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/controller/settings_weight_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/enum/weight_metrics_enum.dart';
 import 'package:flutter/material.dart';
+import 'package:injector/injector.dart';
+
+
 
 class WeightController extends ValueNotifier<double?> {
   WeightController() : super(0);
-
   double minWeight = 0;
   double maxWeight = 600;
+  //double maxWeightPounds = 1322.77;
+  final SettingsWeightController controller = Injector.appInstance.get<SettingsWeightController>();
+
+  String get weightMetrics {
+    if(controller.weightMetric == WeightMetrics.pounds) {
+      return "lb";
+    } else {
+      return "Kg";
+    }
+  }
 
   late TextEditingController weightTextField = TextEditingController(
     text: minWeight.toStringAsPrecision(3),

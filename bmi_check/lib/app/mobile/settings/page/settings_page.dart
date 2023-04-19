@@ -3,7 +3,7 @@ import 'package:bmi_check/app/mobile/settings/components/settings_list_tile_widg
 import 'package:bmi_check/app/mobile/settings/settings_height/settings_height_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/settings_language_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_theme/settings_theme_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_weight/settings_weight_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/page/settings_weight_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

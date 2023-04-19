@@ -1,10 +1,10 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_theme/settings_theme_controller.dart';
 import 'package:bmi_check/app/shared/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:injector/injector.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class SettingsThemePage extends StatefulWidget {
   static const routeName = '/themesettings';
@@ -17,7 +17,8 @@ class SettingsThemePage extends StatefulWidget {
 class _SettingsThemePageState extends State<SettingsThemePage> {
   final ThemeController themeController =
       Injector.appInstance.get<ThemeController>();
-  int? _value = 1;
+  final SettingsThemeController settingsThemeController =
+      Injector.appInstance.get<SettingsThemeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,8 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                         ),
                       ),
                     ),
-                    Text(AppLocalizations.of(context)!.themeSettingsPageTitle, style: textTheme.displayLarge),
+                    Text(AppLocalizations.of(context)!.themeSettingsPageTitle,
+                        style: textTheme.displayLarge),
                   ],
                 ),
                 const SizedBox(height: 80),
@@ -58,11 +60,11 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 1,
-                  groupValue: _value,
+                  groupValue: settingsThemeController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(() {
-                      _value = val;
+                      settingsThemeController.value = val;
                       themeController.toggleTheme(false);
                     });
                   },
@@ -74,12 +76,11 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 2,
-                  groupValue: _value,
+                  groupValue: settingsThemeController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(() {
-                      _value = val;
-
+                      settingsThemeController.value = val;
                       themeController.toggleTheme(true);
                     });
                   },

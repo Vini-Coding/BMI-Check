@@ -1,6 +1,5 @@
-import 'package:bmi_check/l10n/flags.dart';
+import 'package:bmi_check/app/shared/l10n/flags.dart';
 import 'package:flutter/material.dart';
-
 class L10n {
   static final all = [
     const Locale('en'),

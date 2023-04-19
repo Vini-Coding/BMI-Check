@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class WeightWidget extends StatefulWidget {
   const WeightWidget({required this.weightController, super.key});
   final WeightController weightController;
@@ -47,7 +46,9 @@ class _WeightWidgetState extends State<WeightWidget> {
                       style: textTheme.bodyMedium,
                     ),
                     Text(
-                      AppLocalizations.of(context)!.weightMetric,
+                      AppLocalizations.of(context)!.weightMetric(
+                        widget.weightController.weightMetrics,
+                      ),
                       style: textTheme.bodyMedium!
                           .copyWith(fontWeight: FontWeight.w800),
                     ),

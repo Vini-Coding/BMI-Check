@@ -1,7 +1,7 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_language/controller/language_controller.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/settings_language_controller.dart';
-import 'package:bmi_check/l10n/flags.dart';
-import 'package:bmi_check/l10n/l10n.dart';
+import 'package:bmi_check/app/shared/l10n/flags.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -16,9 +16,10 @@ class SettingsLanguagePage extends StatefulWidget {
 }
 
 class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
-  final SettingsLanguageController languageController =
+  final LanguageController languageController =
+      Injector.appInstance.get<LanguageController>();
+  final SettingsLanguageController settingsLanguageController =
       Injector.appInstance.get<SettingsLanguageController>();
-  int? _value = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +64,13 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 1,
-                  groupValue: _value,
+                  groupValue: settingsLanguageController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(
                       () {
                         languageController.setLocale(const Locale('en'));
-                        _value = val;
+                        settingsLanguageController.value = val;
                       },
                     );
                   },
@@ -81,13 +82,13 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 2,
-                  groupValue: _value,
+                  groupValue: settingsLanguageController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(
                       () {
                         languageController.setLocale(const Locale('de'));
-                        _value = val;
+                        settingsLanguageController.value = val;
                       },
                     );
                   },
@@ -99,13 +100,13 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 3,
-                  groupValue: _value,
+                  groupValue: settingsLanguageController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(
                       () {
                         languageController.setLocale(const Locale('es'));
-                        _value = val;
+                        settingsLanguageController.value = val;
                       },
                     );
                   },
@@ -117,13 +118,13 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 4,
-                  groupValue: _value,
+                  groupValue: settingsLanguageController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(
                       () {
                         languageController.setLocale(const Locale('pt'));
-                        _value = val;
+                        settingsLanguageController.value = val;
                       },
                     );
                   },

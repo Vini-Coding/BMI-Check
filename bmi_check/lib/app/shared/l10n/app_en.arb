@@ -44,8 +44,16 @@
         "selectHeightPrompt": "Select your height in",
         "heightMetric": " meters:",
         "age": "Age",
-        "weight": "Weight",
-        "weightMetric": " (kg)",
+        "weight": "Weight ",
+        "weightMetric": "({weightMetric})",
+        "@weightMetric": {
+                "description": "Metric of the weight widget",
+                "placeholders": {
+                        "weightMetric": {
+                                "type": "String"
+                        }
+                }
+        },
         "calculateButton": "Calculate",
         
         "unselectedSexException": "Choose your sex",

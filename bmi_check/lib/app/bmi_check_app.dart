@@ -3,24 +3,24 @@ import 'package:bmi_check/app/mobile/intro/page/intro_page.dart';
 import 'package:bmi_check/app/mobile/result/page/result_page.dart';
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_height/settings_height_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_language/controller/settings_language_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_language/controller/language_controller.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/settings_language_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_theme/settings_theme_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_weight/settings_weight_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/page/settings_weight_page.dart';
+import 'package:bmi_check/app/shared/l10n/l10n.dart';
 import 'package:bmi_check/app/shared/themes/dark/dark_theme.dart';
 import 'package:bmi_check/app/shared/themes/light/light_theme.dart';
 import 'package:bmi_check/app/shared/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:injector/injector.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../l10n/l10n.dart';
 
 class BmiCheckApp extends StatelessWidget {
   BmiCheckApp({super.key});
   final ThemeController themeController =
       Injector.appInstance.get<ThemeController>();
-  final SettingsLanguageController languageController =
-      Injector.appInstance.get<SettingsLanguageController>();
+  final LanguageController languageController =
+      Injector.appInstance.get<LanguageController>();
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,9 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_height/controller/settings_height_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:injector/injector.dart';
 
 class SettingsHeightPage extends StatefulWidget {
   static const routeName = '/settingsHeight';
@@ -13,7 +14,8 @@ class SettingsHeightPage extends StatefulWidget {
 }
 
 class _SettingsHeightPageState extends State<SettingsHeightPage> {
-  int? _value = 1;
+  final SettingsHeightController settingsHeightController =
+      Injector.appInstance.get<SettingsHeightController>();
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +60,11 @@ class _SettingsHeightPageState extends State<SettingsHeightPage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 1,
-                  groupValue: _value,
+                  groupValue: settingsHeightController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(() {
-                      _value = val;
+                      settingsHeightController.value = val;
                     });
                   },
                 ),
@@ -73,11 +75,11 @@ class _SettingsHeightPageState extends State<SettingsHeightPage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 2,
-                  groupValue: _value,
+                  groupValue: settingsHeightController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(() {
-                      _value = val;
+                      settingsHeightController.value = val;
                     });
                   },
                 ),
@@ -88,11 +90,11 @@ class _SettingsHeightPageState extends State<SettingsHeightPage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 3,
-                  groupValue: _value,
+                  groupValue: settingsHeightController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(() {
-                      _value = val;
+                      settingsHeightController.value = val;
                     });
                   },
                 ),
@@ -103,11 +105,11 @@ class _SettingsHeightPageState extends State<SettingsHeightPage> {
                     style: textTheme.bodyMedium,
                   ),
                   value: 4,
-                  groupValue: _value,
+                  groupValue: settingsHeightController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
                     setState(() {
-                      _value = val;
+                      settingsHeightController.value = val;
                     });
                   },
                 ),

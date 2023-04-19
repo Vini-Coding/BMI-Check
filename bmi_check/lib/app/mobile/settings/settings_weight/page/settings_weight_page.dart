@@ -1,9 +1,9 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_weight/settings_weight_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/controller/settings_weight_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:injector/injector.dart';
 
 class SettingsWeightPage extends StatefulWidget {
   static const routeName = '/settingsWeight';
@@ -14,7 +14,8 @@ class SettingsWeightPage extends StatefulWidget {
 }
 
 class _SettingsWeightPageState extends State<SettingsWeightPage> {
-  SettingsWeightController controller = SettingsWeightController();
+  SettingsWeightController controller =
+      Injector.appInstance.get<SettingsWeightController>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +62,9 @@ class _SettingsWeightPageState extends State<SettingsWeightPage> {
                   value: 1,
                   groupValue: controller.value,
                   activeColor: colorScheme.primary,
-                  onChanged: (val) {
+                  onChanged: (inputValue) {
                     setState(() {
-                      controller.value = val;
+                      controller.value = inputValue;
                     });
                   },
                 ),
@@ -76,9 +77,9 @@ class _SettingsWeightPageState extends State<SettingsWeightPage> {
                   value: 2,
                   groupValue: controller.value,
                   activeColor: colorScheme.primary,
-                  onChanged: (val) {
+                  onChanged: (inputValue) {
                     setState(() {
-                      controller.value = val;
+                      controller.value = inputValue;
                     });
                   },
                 ),

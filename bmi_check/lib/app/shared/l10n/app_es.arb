@@ -17,8 +17,8 @@
     "selectHeightPrompt": "Selecciona tu altura en",
     "heightMetric": " metros:",
     "age": "Edad",
-    "weight": "Peso",
-    "weightMetric": " (kg)",
+    "weight": "Peso ",
+    "weightMetric": "({weightMetric})",
     "calculateButton": "Calcular",
 
     "unselectedSexException": "Elige un sexo",

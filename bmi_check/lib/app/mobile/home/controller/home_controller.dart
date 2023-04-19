@@ -5,12 +5,14 @@ import 'package:bmi_check/app/mobile/home/components/weight/weight_controller.da
 import 'package:bmi_check/app/mobile/home/exceptions/empty_age_exception.dart';
 import 'package:bmi_check/app/mobile/home/exceptions/empty_weight_exception.dart';
 import 'package:bmi_check/app/mobile/home/exceptions/unselected_sex_exception.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/controller/settings_weight_controller.dart';
 import 'package:flutter/material.dart';
 
 class HomeController extends ChangeNotifier {
   SexSelected sexController = SexSelected();
   AgeController ageController = AgeController();
   HeightSelectionController heightController = HeightSelectionController();
+  SettingsWeightController weightMetrics = SettingsWeightController();
   WeightController weightController = WeightController();
 
   double bmi = 0;
