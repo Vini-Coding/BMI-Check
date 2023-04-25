@@ -42,7 +42,15 @@
         "feminineSex": "Feminine",
         "masculineSex": "Masculine",
         "selectHeightPrompt": "Select your height in",
-        "heightMetric": " meters:",
+        "heightMetric": " {heightMetric}:",
+        "@heightMetric": {
+                "description": "Metric of the height widget",
+                "placeholders": {
+                        "heightMetric": {
+                                "type": "String"
+                        }
+                }
+        },
         "age": "Age",
         "weight": "Weight ",
         "weightMetric": "({weightMetric})",
@@ -63,10 +71,34 @@
         "overAgeLimitException": "The age must be under 120",
         "underAgeLimitException": "The age must be over 0",
         "nullHeightException": "Insert a valid height",
-        "overHeightLimitException": "The height must be under 2.50",
-        "underHeightLimitException": "The height must be over 1.00",
+        "overHeightLimitException": "The height must be under {maxHeight}",
+        "@overHeightLimitException": {
+                "description": "Text for SnackBar of an Exception caused by an invalid value in the weight field. It is invalid cause it ultrapasses the human overheight limit.",
+                "placeholders": {
+                        "maxHeight": {
+                                "type": "double"
+                        }
+                }
+        },
+        "underHeightLimitException": "The height must be over {minHeight}",
+        "@underHeightLimitException": {
+                "description": "Text for SnackBar of an Exception caused by an invalid value in the weight field. It is invalid cause it ultrapasses the human underheight limit.",
+                "placeholders": {
+                        "minHeight": {
+                                "type": "double"
+                        }
+                }
+        },
         "nullWeightException": "Insert a valid weight",
-        "overWeightLimitException": "The weight must be under 600",
+        "overWeightLimitException": "The weight must be under {maxWeight}",
+        "@overWeightLimitException": {
+                "description": "Text for SnackBar of an Exception caused by an invalid value in the weight field. It is invalid cause it ultrapasses the human overweight limit.",
+                "placeholders": {
+                        "maxWeight": {
+                                "type": "double"
+                        }
+                }
+        },
         "underWeightLimitException": "The weight must be over 0",
         
         "idealResultTitle": "Ideal BMI",
@@ -88,14 +120,14 @@
         "settingsPageTitle": "Settings",
         "heightMetricsListTile": "Height Metrics",
         "heightSettingsPageTitle": "Height Metrics\nSettings",
-        "heightSettingsPageTile1": "Inches (inch)",
-        "heightSettingsPageTile2": "Feet (feet)",
+        "heightSettingsPageTile1": "Feet (ft)",
+        "heightSettingsPageTile2": "Inches (in)",
         "heightSettingsPageTile3": "Meters (m)",
         "heightSettingsPageTile4": "Centimeters (cm)",
         "weightMetricsListTile": "Weight Metrics",
         "weightSettingsPageTitle": "Weight Metrics\nSettings",
         "weightSettingsTile1": "Pounds (lb)",
-        "weightSettingsTile2": "Kilograms (Kg)",
+        "weightSettingsTile2": "Kilograms (kg)",
         "languageSettingsListTile": "Language",
         "languageSettingsPageTitle": "Language",
         "themeSettingsListTile": "Theme",

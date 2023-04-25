@@ -20,7 +20,6 @@ class _WeightWidgetState extends State<WeightWidget> {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     double minWeight = widget.weightController.minWeight;
-    double maxWeight = widget.weightController.maxWeight;
 
     return ValueListenableBuilder(
       valueListenable: widget.weightController,
@@ -69,7 +68,7 @@ class _WeightWidgetState extends State<WeightWidget> {
                       );
                     } on HandledException catch (exception) {
                       if (exception is OverWeightLimitException) {
-                        widget.weightController.weight = maxWeight;
+                        widget.weightController.weight = minWeight;
                       } else {
                         widget.weightController.weight = minWeight;
                       }

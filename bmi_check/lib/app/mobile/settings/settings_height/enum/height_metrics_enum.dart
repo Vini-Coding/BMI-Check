@@ -1,6 +1,6 @@
 enum HeightMetrics {
-  inches,
   feet,
+  inches,
   meters,
   centimeters,
 }

@@ -90,7 +90,9 @@ class _HomePageState extends State<HomePage> {
                         style: textTheme.bodyMedium,
                       ),
                       Text(
-                        AppLocalizations.of(context)!.heightMetric,
+                        AppLocalizations.of(context)!.heightMetric(
+                          controller.heightController.heightMetrics,
+                        ),
                         style: textTheme.bodyMedium!
                             .copyWith(fontWeight: FontWeight.w700),
                       ),

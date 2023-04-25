@@ -1,9 +1,11 @@
 import 'package:bmi_check/app/mobile/home/components/height/exceptions/over_height_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/height/height_selection_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_height/controller/settings_height_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:injector/injector.dart';
 
 class HeightSelectionWidget extends StatefulWidget {
   const HeightSelectionWidget(
@@ -15,16 +17,26 @@ class HeightSelectionWidget extends StatefulWidget {
 }
 
 class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
+  SettingsHeightController settingsHeightController =
+      Injector.appInstance.get<SettingsHeightController>();
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double minHeight = widget.heightSelectionController.minHeight;
-    double maxHeight = widget.heightSelectionController.maxHeight;
-
     return ValueListenableBuilder(
       valueListenable: widget.heightSelectionController,
       builder: (context, height, child) {
+        double minHeight = widget.heightSelectionController.minHeight;
+        double maxHeight = widget.heightSelectionController.maxHeight;
+        double safeHeight;
+        if (height! >= minHeight && height <= maxHeight) {
+          safeHeight = height;
+        } else {
+          safeHeight = minHeight;
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            widget.heightSelectionController.onChanged(safeHeight);
+          });
+        }
         return Container(
           height: 160,
           width: double.maxFinite,
@@ -86,7 +98,7 @@ class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
                     ),
                     Expanded(
                       child: Slider(
-                        value: height!.toDouble(),
+                        value: safeHeight.toDouble(),
                         min: minHeight,
                         max: maxHeight,
                         onChanged: (double sliderValue) => widget

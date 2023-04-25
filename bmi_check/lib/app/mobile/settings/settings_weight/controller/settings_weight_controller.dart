@@ -5,10 +5,13 @@ class SettingsWeightController extends ValueNotifier {
   SettingsWeightController() : super(1);
   
   WeightMetrics get weightMetric {
-    if (value == 1) {
-      return WeightMetrics.pounds;
-    } else {
-      return WeightMetrics.kilograms;
+    switch (value) {
+      case 1:
+        return WeightMetrics.pounds;
+      case 2:
+        return WeightMetrics.kilograms;
+      default:
+        return WeightMetrics.kilograms;
     }
   }
 }

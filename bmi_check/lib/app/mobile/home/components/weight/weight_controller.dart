@@ -6,20 +6,32 @@ import 'package:bmi_check/app/mobile/settings/settings_weight/enum/weight_metric
 import 'package:flutter/material.dart';
 import 'package:injector/injector.dart';
 
-
-
 class WeightController extends ValueNotifier<double?> {
   WeightController() : super(0);
+
+  final SettingsWeightController controller =
+      Injector.appInstance.get<SettingsWeightController>();
+      
   double minWeight = 0;
-  double maxWeight = 600;
-  //double maxWeightPounds = 1322.77;
-  final SettingsWeightController controller = Injector.appInstance.get<SettingsWeightController>();
+  double get maxWeight {
+    switch (controller.weightMetric) {
+      case WeightMetrics.pounds:
+        return 1323;
+      case WeightMetrics.kilograms:
+        return 600;
+      default:
+        return 600;
+    }
+  }
 
   String get weightMetrics {
-    if(controller.weightMetric == WeightMetrics.pounds) {
-      return "lb";
-    } else {
-      return "Kg";
+    switch (controller.weightMetric) {
+      case WeightMetrics.pounds:
+        return "lb";
+      case WeightMetrics.kilograms:
+        return "kg";
+      default:
+        return "(kg)";
     }
   }
 
@@ -38,7 +50,7 @@ class WeightController extends ValueNotifier<double?> {
   }
 
   void increment() {
-    if (weight! <= 600) {
+    if (weight! <= maxWeight) {
       weight = weight! + 1;
     } else {
       null;
