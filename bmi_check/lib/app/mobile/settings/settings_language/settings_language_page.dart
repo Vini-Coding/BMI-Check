@@ -58,78 +58,193 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                   ],
                 ),
                 const SizedBox(height: 80),
-                RadioListTile(
-                  title: Text(
-                    "English  ${Flags.usa}",
-                    style: textTheme.bodyMedium,
+                Expanded(
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      RadioListTile(
+                        title: Text(
+                          "普通话 ${Flags.china}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 1,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('ch'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "Deutsch ${Flags.germany}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 2,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('de'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "English  ${Flags.usa}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 3,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('en'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "Español ${Flags.spain}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 4,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('es'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "Français ${Flags.france}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 5,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('fr'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "हिंदी ${Flags.india}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 6,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('in'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "Italiano ${Flags.italy}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 7,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('it'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "日本 ${Flags.japan}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 8,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('ja'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "Português (Brasil) ${Flags.brazil}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 9,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('pt'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          "Русский ${Flags.russia}",
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 10,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.setLocale(const Locale('ru'));
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                    ],
                   ),
-                  value: 1,
-                  groupValue: settingsLanguageController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(
-                      () {
-                        languageController.setLocale(const Locale('en'));
-                        settingsLanguageController.value = val;
-                      },
-                    );
-                  },
                 ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    "Deutsch ${Flags.germany}",
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 2,
-                  groupValue: settingsLanguageController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(
-                      () {
-                        languageController.setLocale(const Locale('de'));
-                        settingsLanguageController.value = val;
-                      },
-                    );
-                  },
-                ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    "Español ${Flags.spain}",
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 3,
-                  groupValue: settingsLanguageController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(
-                      () {
-                        languageController.setLocale(const Locale('es'));
-                        settingsLanguageController.value = val;
-                      },
-                    );
-                  },
-                ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    "Português (Brasil) ${Flags.brazil}",
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 4,
-                  groupValue: settingsLanguageController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(
-                      () {
-                        languageController.setLocale(const Locale('pt'));
-                        settingsLanguageController.value = val;
-                      },
-                    );
-                  },
-                ),
-                const SizedBox(height: 10),
               ],
             ),
           ),

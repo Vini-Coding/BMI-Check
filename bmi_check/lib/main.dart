@@ -5,4 +5,4 @@ import 'package:flutter/material.dart';
 void main() {
   registerDependencies();
   runApp(BmiCheckApp());
-}
+} 

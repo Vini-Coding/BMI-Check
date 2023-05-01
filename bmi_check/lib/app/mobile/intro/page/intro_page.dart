@@ -47,8 +47,7 @@ class _IntroPageState extends State<IntroPage> {
           isLastPage: false,
           imagePath: 'assets/vectors/intro2.png',
           title: AppLocalizations.of(context)!.titleIntroPage2,
-          bodyText:
-              AppLocalizations.of(context)!.bodyIntroPage2,
+          bodyText: AppLocalizations.of(context)!.bodyIntroPage2,
         ),
         IntroPageWidget(
           isLastPage: true,
