@@ -1,5 +1,6 @@
 {
     "language": "普通话",
+    "@@locale": "zh",
 
     "titleIntroPage1": "欢迎使用\nIMC Check",
     "bodyIntroPage1": "快速简便地发现自己的身体质量指数是否理想，并与朋友分享",

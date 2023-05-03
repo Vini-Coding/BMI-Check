@@ -73,7 +73,7 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                         onChanged: (val) {
                           setState(
                             () {
-                              languageController.setLocale(const Locale('ch'));
+                              languageController.setLocale(const Locale('zh'));
                               settingsLanguageController.value = val;
                             },
                           );

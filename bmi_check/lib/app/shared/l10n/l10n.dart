@@ -7,7 +7,7 @@ class L10n {
     const Locale('pt'),
     const Locale('de'),
     const Locale('es'),
-    const Locale('ch'),
+    const Locale('zh'),
     const Locale('fr'),
     const Locale('in'),
     const Locale('it'),
@@ -27,7 +27,7 @@ class L10n {
         return Flags.spain;
       case 'jp':
         return Flags.japan;
-      case 'ch':
+      case 'zh':
         return Flags.china;
       case 'fr':
         return Flags.france;
