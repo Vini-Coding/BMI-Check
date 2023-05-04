@@ -113,6 +113,18 @@
         "obesity2ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...", 
         "obesity3ResultTitle": "Grade 3 of Obesity",
         "obesity3ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...",
+        "idealWeightText": "PS: Your ideal weight is between {lowerIdealWeightLimit} and {upperIdealWeightLimit}",
+        "@idealWeightText": {
+                "description": "Text that reveals the ideal weight of a Person.",
+                "placeholders": {
+                        "lowerIdealWeightLimit": {
+                                "type": "String"
+                        },
+                        "upperIdealWeightLimit": {
+                                "type": "String"
+                        }
+                }
+        },
         "shareButton": "Share",
         "shareText": "Look at my BMI! You can check yours in BMI Check!",
 

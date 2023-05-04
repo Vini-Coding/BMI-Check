@@ -33,55 +33,62 @@ class _SettingsWeightPageState extends State<SettingsWeightPage> {
             padding: const EdgeInsets.all(30),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: IconButton(
-                        onPressed: goToSettings,
-                        icon: const FaIcon(
-                          FontAwesomeIcons.arrowLeftLong,
-                          size: 30,
-                        ),
+                Expanded(
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: IconButton(
+                              onPressed: goToSettings,
+                              icon: const FaIcon(
+                                FontAwesomeIcons.arrowLeftLong,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.weightSettingsPageTitle,
+                            style: textTheme.displayLarge,
+                            textAlign: TextAlign.right,
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.weightSettingsPageTitle,
-                      style: textTheme.displayLarge,
-                      textAlign: TextAlign.right,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 80),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.weightSettingsTile1,
-                    style: textTheme.bodyMedium,
+                      const SizedBox(height: 80),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.weightSettingsTile1,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 1,
+                        groupValue: controller.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (inputValue) {
+                          setState(() {
+                            controller.value = inputValue;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.weightSettingsTile2,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 2,
+                        groupValue: controller.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (inputValue) {
+                          setState(() {
+                            controller.value = inputValue;
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                  value: 1,
-                  groupValue: controller.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (inputValue) {
-                    setState(() {
-                      controller.value = inputValue;
-                    });
-                  },
-                ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.weightSettingsTile2,
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 2,
-                  groupValue: controller.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (inputValue) {
-                    setState(() {
-                      controller.value = inputValue;
-                    });
-                  },
                 ),
               ],
             ),

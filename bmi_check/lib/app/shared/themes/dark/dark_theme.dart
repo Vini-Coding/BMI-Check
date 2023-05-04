@@ -18,6 +18,11 @@ ThemeData darkTheme = ThemeData(
       fontFamily: 'PatuaOne',
       color: darkColorScheme.primary,
     ),
+    displaySmall: TextStyle(
+      fontSize: 18,
+      fontFamily: 'PatuaOne',
+      color: darkColorScheme.primary,
+    ),
     bodyLarge: TextStyle(
       fontSize: 20,
       fontFamily: 'Varela Round',

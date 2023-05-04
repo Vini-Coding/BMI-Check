@@ -46,6 +46,7 @@
     "obesity2ResultDescription": "La obesidad está asociada a varias complicaciones en diferentes sistemas del cuerpo. Se pueden mencionar: diabetes mellitus tipo 2 por glucosa elevada, diabetes gestacional, enfermedades del colesterol, hipertensión arterial sistémica, enfermedades cardíacas, apnea del sueño, enfermedades del hígado, algunos tipos de cáncer, ansiedad y depresión, entre otros. \nRecomendamos que consultes a un nutricionista...",
     "obesity3ResultTitle": "Grado 3 de Obesidad",
     "obesity3ResultDescription": "La obesidad está asociada a varias complicaciones en diferentes sistemas del cuerpo. Se pueden mencionar: diabetes mellitus tipo 2 por glucosa elevada, diabetes gestacional, enfermedades del colesterol, hipertensión arterial sistémica, enfermedades cardíacas, apnea del sueño, enfermedades del hígado, algunos tipos de cáncer, ansiedad y depresión, entre otros. \nRecomendamos que consultes a un nutricionista...",
+    "idealWeightText": "PD: Su peso ideal está entre {lowerIdealWeightLimit} y {upperIdealWeightLimit}",
     "shareButton": "Compartir",
     "shareText": "¡Mira mi IMC! ¡Puedes verificar el tuyo en IMC Check!",
 

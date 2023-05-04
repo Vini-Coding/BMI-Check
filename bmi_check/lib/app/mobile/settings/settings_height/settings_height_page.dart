@@ -33,85 +33,92 @@ class _SettingsHeightPageState extends State<SettingsHeightPage> {
             padding: const EdgeInsets.all(30),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: IconButton(
-                        onPressed: goToSettings,
-                        icon: const FaIcon(
-                          FontAwesomeIcons.arrowLeftLong,
-                          size: 30,
-                        ),
+                Expanded(
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: IconButton(
+                              onPressed: goToSettings,
+                              icon: const FaIcon(
+                                FontAwesomeIcons.arrowLeftLong,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.heightSettingsPageTitle,
+                            style: textTheme.displayLarge,
+                            textAlign: TextAlign.right,
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.heightSettingsPageTitle,
-                      style: textTheme.displayLarge,
-                      textAlign: TextAlign.right,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 80),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.heightSettingsPageTile1,
-                    style: textTheme.bodyMedium,
+                      const SizedBox(height: 80),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.heightSettingsPageTile1,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 1,
+                        groupValue: settingsHeightController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(() {
+                            settingsHeightController.value = val;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.heightSettingsPageTile2,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 2,
+                        groupValue: settingsHeightController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(() {
+                            settingsHeightController.value = val;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.heightSettingsPageTile3,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 3,
+                        groupValue: settingsHeightController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(() {
+                            settingsHeightController.value = val;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.heightSettingsPageTile4,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 4,
+                        groupValue: settingsHeightController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(() {
+                            settingsHeightController.value = val;
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                  value: 1,
-                  groupValue: settingsHeightController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(() {
-                      settingsHeightController.value = val;
-                    });
-                  },
-                ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.heightSettingsPageTile2,
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 2,
-                  groupValue: settingsHeightController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(() {
-                      settingsHeightController.value = val;
-                    });
-                  },
-                ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.heightSettingsPageTile3,
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 3,
-                  groupValue: settingsHeightController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(() {
-                      settingsHeightController.value = val;
-                    });
-                  },
-                ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.heightSettingsPageTile4,
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 4,
-                  groupValue: settingsHeightController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(() {
-                      settingsHeightController.value = val;
-                    });
-                  },
                 ),
               ],
             ),

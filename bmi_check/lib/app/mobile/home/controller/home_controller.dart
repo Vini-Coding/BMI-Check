@@ -21,9 +21,14 @@ class HomeController extends ChangeNotifier {
       Injector.appInstance.get<WeightController>();
   SettingsHeightController heightMetricsController =
       Injector.appInstance.get<SettingsHeightController>();
-  SettingsWeightController weightMetricsController = Injector.appInstance.get<SettingsWeightController>();
+  SettingsWeightController weightMetricsController =
+      Injector.appInstance.get<SettingsWeightController>();
 
   double bmi = 0;
+  double lowerIdealNumberWeightLimit = 0;
+  double upperIdealNumberWeightLimit = 0;
+  String lowerIdealWeightLimit = "";
+  String upperIdealWeightLimit = "";
 
   void validate() {
     if (sexController.value == null) {
@@ -35,7 +40,7 @@ class HomeController extends ChangeNotifier {
     }
   }
 
-  void calculate() {
+  void bmiCalculate() {
     double height = heightController.value!;
     double weight = weightController.value!;
 
@@ -65,20 +70,64 @@ class HomeController extends ChangeNotifier {
       case HeightMetrics.feet:
         feetsToMeters();
         bmi = weight / (height * height);
+        calculateIdealWeight(height);
         return;
       case HeightMetrics.inches:
         inchesToMeters();
         bmi = weight / (height * height);
+        calculateIdealWeight(height);
         return;
       case HeightMetrics.meters:
         bmi = weight / (height * height);
+        calculateIdealWeight(height);
         return;
       case HeightMetrics.centimeters:
         centimetersToMeters();
         bmi = weight / (height * height);
+        calculateIdealWeight(height);
         return;
       default:
         bmi = weight / (height * height);
+        calculateIdealWeight(height);
+        return;
+    }
+  }
+
+  void calculateIdealWeight(double height) {
+    double kilogramsToPounds(double weightInKilograms) {
+      double weightInPounds = weightInKilograms * 2.205;
+      return weightInPounds;
+    }
+
+    switch (weightMetricsController.weightMetric) {
+      case WeightMetrics.kilograms:
+        lowerIdealNumberWeightLimit = 18.5 * (height * height);
+        upperIdealNumberWeightLimit = 24.9 * (height * height);
+        lowerIdealWeightLimit =
+            lowerIdealNumberWeightLimit.toStringAsPrecision(2);
+        upperIdealWeightLimit =
+            "${upperIdealNumberWeightLimit.toStringAsPrecision(2)} kg";
+        return;
+      case WeightMetrics.pounds:
+        lowerIdealNumberWeightLimit = 18.5 * (height * height);
+        upperIdealNumberWeightLimit = 24.9 * (height * height);
+        lowerIdealNumberWeightLimit =
+            kilogramsToPounds(lowerIdealNumberWeightLimit);
+        upperIdealNumberWeightLimit =
+            kilogramsToPounds(upperIdealNumberWeightLimit);
+        lowerIdealWeightLimit =
+            lowerIdealNumberWeightLimit.toStringAsPrecision(2);
+        upperIdealWeightLimit =
+            "${upperIdealNumberWeightLimit.toStringAsPrecision(2)} lb";
+        return;
+      default:
+        lowerIdealNumberWeightLimit = 18.5 * (height * height);
+        upperIdealNumberWeightLimit = 24.9 * (height * height);
+        lowerIdealWeightLimit =
+            lowerIdealNumberWeightLimit.toStringAsPrecision(2);
+        upperIdealWeightLimit =
+            "${upperIdealNumberWeightLimit.toStringAsPrecision(2)} kg";
+
         return;
     }
   }

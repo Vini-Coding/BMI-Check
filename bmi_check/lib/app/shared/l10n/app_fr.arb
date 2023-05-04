@@ -46,6 +46,7 @@
     "obesity2ResultDescription": "L'obésité est associée à plusieurs complications dans différents systèmes corporels. On peut citer : le diabète de type 2 causé par une glycémie élevée ; le diabète gestationnel ; les maladies du cholestérol ; l'hypertension artérielle systémique ; les maladies cardiaques ; l'apnée du sommeil ; les maladies du foie ; certains types de cancer, l'anxiété et la dépression ; entre autres. \n Nous vous recommandons de consulter un nutritionniste...",
     "obesity3ResultTitle": "Obésité de grade 3",
     "obesity3ResultDescription": "L'obésité est associée à plusieurs complications dans différents systèmes corporels. On peut citer : le diabète de type 2 causé par une glycémie élevée ; le diabète gestationnel ; les maladies du cholestérol ; l'hypertension artérielle systémique ; les maladies cardiaques ; l'apnée du sommeil ; les maladies du foie ; certains types de cancer, l'anxiété et la dépression ; entre autres. \n Nous vous recommandons de consulter un nutritionniste...",
+    "idealWeightText": "PS: Votre poids idéal se situe entre {lowerIdealWeightLimit} et {upperIdealWeightLimit}",
     "shareButton": "Partager",
     "shareText": "Regardez mon IMC ! Vous pouvez vérifier le vôtre sur IMC Check!",   
 

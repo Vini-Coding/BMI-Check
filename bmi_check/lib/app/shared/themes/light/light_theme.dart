@@ -18,6 +18,11 @@ ThemeData lightTheme = ThemeData(
       fontFamily: 'PatuaOne',
       color: lightColorScheme.primary,
     ),
+    displaySmall: TextStyle(
+      fontSize: 18,
+      fontFamily: 'PatuaOne',
+      color: lightColorScheme.primary,
+    ),
     bodyLarge: TextStyle(
       fontSize: 20,
       fontFamily: 'Varela Round',

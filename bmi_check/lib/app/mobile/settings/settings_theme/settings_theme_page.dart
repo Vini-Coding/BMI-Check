@@ -36,69 +36,76 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
             padding: const EdgeInsets.all(30),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: IconButton(
-                        onPressed: goToSettings,
-                        icon: const FaIcon(
-                          FontAwesomeIcons.arrowLeftLong,
-                          size: 30,
-                        ),
+                Expanded(
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: IconButton(
+                              onPressed: goToSettings,
+                              icon: const FaIcon(
+                                FontAwesomeIcons.arrowLeftLong,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                          Text(AppLocalizations.of(context)!.themeSettingsPageTitle,
+                              style: textTheme.displayLarge),
+                        ],
                       ),
-                    ),
-                    Text(AppLocalizations.of(context)!.themeSettingsPageTitle,
-                        style: textTheme.displayLarge),
-                  ],
-                ),
-                const SizedBox(height: 80),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.pageTileSystemDefault,
-                    style: textTheme.bodyMedium,
+                      const SizedBox(height: 80),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.pageTileSystemDefault,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 1,
+                        groupValue: settingsThemeController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(() {
+                            settingsThemeController.value = val;
+                            themeController.getThemeSystem();
+                          });
+                        },
+                      ),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.themeSettingsPageTile2,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 2,
+                        groupValue: settingsThemeController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(() {
+                            settingsThemeController.value = val;
+                            themeController.toggleTheme(false);
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile(
+                        title: Text(
+                          AppLocalizations.of(context)!.themeSettingsPageTile3,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 3,
+                        groupValue: settingsThemeController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(() {
+                            settingsThemeController.value = val;
+                            themeController.toggleTheme(true);
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                  value: 1,
-                  groupValue: settingsThemeController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(() {
-                      settingsThemeController.value = val;
-                      themeController.getThemeSystem();
-                    });
-                  },
-                ),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.themeSettingsPageTile2,
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 2,
-                  groupValue: settingsThemeController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(() {
-                      settingsThemeController.value = val;
-                      themeController.toggleTheme(false);
-                    });
-                  },
-                ),
-                const SizedBox(height: 10),
-                RadioListTile(
-                  title: Text(
-                    AppLocalizations.of(context)!.themeSettingsPageTile3,
-                    style: textTheme.bodyMedium,
-                  ),
-                  value: 3,
-                  groupValue: settingsThemeController.value,
-                  activeColor: colorScheme.primary,
-                  onChanged: (val) {
-                    setState(() {
-                      settingsThemeController.value = val;
-                      themeController.toggleTheme(true);
-                    });
-                  },
                 ),
               ],
             ),

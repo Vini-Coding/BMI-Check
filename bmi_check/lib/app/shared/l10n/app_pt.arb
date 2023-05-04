@@ -46,6 +46,7 @@
         "obesity2ResultDescription": "A obesidade está associada a várias complicações em diferentes sistemas do corpo. Podem ser citados: diabetes melito tipo 2 por glicose elevada; diabetes gestacional; doenças do colesterol, hipertensão arterial sistêmica; doenças cardíacas; apnéia do sono; doenças do fígado; alguns tipos de câncer, ansiedade e depressão; entre outros. \nRecomendamos que procure um nutricionista...", 
         "obesity3ResultTitle": "Grau 3 de Obesidade",
         "obesity3ResultDescription": "A obesidade está associada a várias complicações em diferentes sistemas do corpo. Podem ser citados: diabetes melito tipo 2 por glicose elevada; diabetes gestacional; doenças do colesterol, hipertensão arterial sistêmica; doenças cardíacas; apnéia do sono; doenças do fígado; alguns tipos de câncer, ansiedade e depressão; entre outros. \nRecomendamos que procure um nutricionista...",
+        "idealWeightText": "PS: Seu peso ideal está entre {lowerIdealWeightLimit} e {upperIdealWeightLimit}",
         "shareButton": "Compartilhar",
         "shareText": "Olha o meu IMC! Você pode checar o seu no IMC Check!",
 

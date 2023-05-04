@@ -34,54 +34,60 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: IconButton(
-                        onPressed: goToHome,
-                        icon: const FaIcon(
-                          FontAwesomeIcons.arrowLeftLong,
-                          size: 30,
-                        ),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: IconButton(
+                              onPressed: goToHome,
+                              icon: const FaIcon(
+                                FontAwesomeIcons.arrowLeftLong,
+                                size: 30,
+                              ),
+                            ),
+                          ),
+                          Text(AppLocalizations.of(context)!.settingsPageTitle, style: textTheme.displayLarge),
+                        ],
                       ),
-                    ),
-                    Text(AppLocalizations.of(context)!.settingsPageTitle, style: textTheme.displayLarge),
-                  ],
-                ),
-                const SizedBox(height: 80),
-                SettingsListTileWidget(
-                  icon: FontAwesomeIcons.ruler,
-                  title: AppLocalizations.of(context)!.heightMetricsListTile,
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, SettingsHeightPage.routeName);
-                  },
-                ),
-                SettingsListTileWidget(
-                  icon: FontAwesomeIcons.weightScale,
-                  title: AppLocalizations.of(context)!.weightMetricsListTile,
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, SettingsWeightPage.routeName);
-                  },
-                ),
-                SettingsListTileWidget(
-                  icon: FontAwesomeIcons.globe,
-                  title: AppLocalizations.of(context)!.languageSettingsListTile,
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, SettingsLanguagePage.routeName);
-                  },
-                ),
-                SettingsListTileWidget(
-                  icon: FontAwesomeIcons.sun,
-                  title: AppLocalizations.of(context)!.themeSettingsListTile,
-                  onTap: () {
-                    Navigator.pushReplacementNamed(
-                        context, SettingsThemePage.routeName);
-                  },
+                      const SizedBox(height: 80),
+                      SettingsListTileWidget(
+                        icon: FontAwesomeIcons.ruler,
+                        title: AppLocalizations.of(context)!.heightMetricsListTile,
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, SettingsHeightPage.routeName);
+                        },
+                      ),
+                      SettingsListTileWidget(
+                        icon: FontAwesomeIcons.weightScale,
+                        title: AppLocalizations.of(context)!.weightMetricsListTile,
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, SettingsWeightPage.routeName);
+                        },
+                      ),
+                      SettingsListTileWidget(
+                        icon: FontAwesomeIcons.globe,
+                        title: AppLocalizations.of(context)!.languageSettingsListTile,
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, SettingsLanguagePage.routeName);
+                        },
+                      ),
+                      SettingsListTileWidget(
+                        icon: FontAwesomeIcons.sun,
+                        title: AppLocalizations.of(context)!.themeSettingsListTile,
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, SettingsThemePage.routeName);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

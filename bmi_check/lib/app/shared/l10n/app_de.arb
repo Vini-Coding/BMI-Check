@@ -46,6 +46,7 @@
     "obesity2ResultDescription": "Fettleibigkeit ist mit verschiedenen Komplikationen in verschiedenen Körpersystemen verbunden. Dazu gehören Typ-2-Diabetes aufgrund hoher Glukose, Schwangerschaftsdiabetes, Cholesterinerkrankungen, systemische Hypertonie, Herzkrankheiten, Schlafapnoe, Lebererkrankungen, einige Krebsarten, Angstzustände und Depressionen, unter anderem. \n Wir empfehlen, dass Sie sich an einen Ernährungsberater wenden...",
     "obesity3ResultTitle": "Grad 3 der Fettleibigkeit",
     "obesity3ResultDescription": "Fettleibigkeit ist mit verschiedenen Komplikationen in verschiedenen Körpersystemen verbunden. Dazu gehören Typ-2-Diabetes aufgrund hoher Glukose, Schwangerschaftsdiabetes, Cholesterinerkrankungen, systemische Hypertonie, Herzkrankheiten, Schlafapnoe, Lebererkrankungen, einige Krebsarten, Angstzustände und Depressionen, unter anderem. \n Wir empfehlen, dass Sie sich an einen Ernährungsberater wenden...",
+    "idealWeightText": "PS: Ihr ideales Gewicht liegt zwischen {lowerIdealWeightLimit} und {upperIdealWeightLimit}",
     "shareButton": "Teilen",
     "shareText": "Schau dir meinen BMI an! Du kannst deinen im BMI Check überprüfen!",
 

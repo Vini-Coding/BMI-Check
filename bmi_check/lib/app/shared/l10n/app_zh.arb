@@ -47,6 +47,7 @@
     "obesity2ResultDescription": "肥胖与身体的不同系统中的多种并发症有关，例如：高血糖引起的2型糖尿病；妊娠糖尿病；胆固醇疾病、高血压；心脏疾病；睡眠呼吸暂停；肝脏疾病；某些类型的癌症、焦虑和抑郁症等等。\n我们建议您咨询一位营养师......",
     "obesity3ResultTitle": "肥胖3级",
     "obesity3ResultDescription": "肥胖与身体的不同系统中的多种并发症有关，例如：高血糖引起的2型糖尿病；妊娠糖尿病；胆固醇疾病、高血压；心脏疾病；睡眠呼吸暂停；肝脏疾病；某些类型的癌症、焦虑和抑郁症等等。\n我们建议您咨询一位营养师......",
+    "idealWeightText": "附注：您的理想体重介于 {lowerIdealWeightLimit} 和 {upperIdealWeightLimit} 之间",
     "shareButton": "分享",
     "shareText": "看看我的BMI！您可以在BMI检测中检查您的BMI！",
     

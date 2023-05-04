@@ -34,6 +34,8 @@ class _HomePageState extends State<HomePage> {
         ResultPage.routeName,
         arguments: ResultArguments(
           bmi: controller.bmi,
+          lowerIdealWeightLimit: controller.lowerIdealWeightLimit,
+          upperIdealWeightLimit: controller.upperIdealWeightLimit,
           sex: controller.sexController.value,
         ),
       );
@@ -125,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       try {
                         controller.validate();
-                        controller.calculate();
+                        controller.bmiCalculate();
                         goToResult();
                       } on HandledException catch (exception) {
                         showErrorSnackBar(
