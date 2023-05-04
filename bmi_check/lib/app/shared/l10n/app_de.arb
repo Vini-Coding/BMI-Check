@@ -64,6 +64,7 @@
     "languageSettingsPageTitle": "Sprache",
     "themeSettingsListTile": "Thema",
     "themeSettingsPageTitle": "Thema",
-    "themeSettingsPageTile1": "Helles Thema",
-    "themeSettingsPageTile2": "Dunkles Thema"
+    "pageTileSystemDefault": "Systemstandard",
+    "themeSettingsPageTile2": "Helles Thema",
+    "themeSettingsPageTile3": "Dunkles Thema"
 }

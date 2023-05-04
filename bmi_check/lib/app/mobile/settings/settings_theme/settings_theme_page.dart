@@ -56,10 +56,25 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                 const SizedBox(height: 80),
                 RadioListTile(
                   title: Text(
-                    AppLocalizations.of(context)!.themeSettingsPageTile1,
+                    AppLocalizations.of(context)!.pageTileSystemDefault,
                     style: textTheme.bodyMedium,
                   ),
                   value: 1,
+                  groupValue: settingsThemeController.value,
+                  activeColor: colorScheme.primary,
+                  onChanged: (val) {
+                    setState(() {
+                      settingsThemeController.value = val;
+                      themeController.getThemeSystem();
+                    });
+                  },
+                ),
+                RadioListTile(
+                  title: Text(
+                    AppLocalizations.of(context)!.themeSettingsPageTile2,
+                    style: textTheme.bodyMedium,
+                  ),
+                  value: 2,
                   groupValue: settingsThemeController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {
@@ -72,10 +87,10 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                 const SizedBox(height: 10),
                 RadioListTile(
                   title: Text(
-                    AppLocalizations.of(context)!.themeSettingsPageTile2,
+                    AppLocalizations.of(context)!.themeSettingsPageTile3,
                     style: textTheme.bodyMedium,
                   ),
-                  value: 2,
+                  value: 3,
                   groupValue: settingsThemeController.value,
                   activeColor: colorScheme.primary,
                   onChanged: (val) {

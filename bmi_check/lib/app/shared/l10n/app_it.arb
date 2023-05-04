@@ -64,6 +64,7 @@
     "languageSettingsPageTitle": "Lingua",
     "themeSettingsListTile": "Tema",
     "themeSettingsPageTitle": "Tema",
-    "themeSettingsPageTile1": "Tema Chiaro",
-    "themeSettingsPageTile2": "Tema Scuro"
+    "pageTileSystemDefault": "Impostazioni predefinite di sistema",
+    "themeSettingsPageTile2": "Tema Chiaro",
+    "themeSettingsPageTile3": "Tema Scuro"
 }

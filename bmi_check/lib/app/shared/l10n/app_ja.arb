@@ -64,6 +64,7 @@
     "languageSettingsPageTitle": "言語",
     "themeSettingsListTile": "テーマ",
     "themeSettingsPageTitle": "テーマ",
-    "themeSettingsPageTile1": "ライトテーマ",
-    "themeSettingsPageTile2": "ダークテーマ"
+    "pageTileSystemDefault": "システムデフォルト",
+    "themeSettingsPageTile2": "ライトテーマ",
+    "themeSettingsPageTile3": "ダークテーマ"
 }

@@ -64,6 +64,7 @@
     "languageSettingsPageTitle": "भाषा",
     "themeSettingsListTile": "थीम",
     "themeSettingsPageTitle": "थीम",
-    "themeSettingsPageTile1": "उज्ज्वल थीम",
-    "themeSettingsPageTile2": "डार्क थीम"
+    "pageTileSystemDefault": "सिस्टम डिफ़ॉल्ट",
+    "themeSettingsPageTile2": "उज्ज्वल थीम",
+    "themeSettingsPageTile3": "डार्क थीम"
 }

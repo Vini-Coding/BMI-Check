@@ -64,6 +64,7 @@
     "languageSettingsPageTitle": "Язык",
     "themeSettingsListTile": "Тема",
     "themeSettingsPageTitle": "Тема",
-    "themeSettingsPageTile1": "Светлая тема",
-    "themeSettingsPageTile2": "Темная тема"
+    "pageTileSystemDefault": "Системная тема по умолчанию",
+    "themeSettingsPageTile2": "Светлая тема",
+    "themeSettingsPageTile3": "Темная тема"
 }

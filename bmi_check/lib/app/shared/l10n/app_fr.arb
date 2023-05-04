@@ -64,6 +64,7 @@
     "languageSettingsPageTitle": "Langue",
     "themeSettingsListTile": "Thème",
     "themeSettingsPageTitle": "Thème",
-    "themeSettingsPageTile1": "Thème Clair",
-    "themeSettingsPageTile2": "Thème Foncé"
+    "pageTileSystemDefault": "Paramètres du système",
+    "themeSettingsPageTile2": "Thème Clair",
+    "themeSettingsPageTile3": "Thème Foncé"
 }

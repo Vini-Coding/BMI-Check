@@ -132,6 +132,7 @@
         "languageSettingsPageTitle": "Language",
         "themeSettingsListTile": "Theme",
         "themeSettingsPageTitle": "Theme Settings",
-        "themeSettingsPageTile1": "Light Theme",
-        "themeSettingsPageTile2": "Dark Theme"
+        "pageTileSystemDefault": "System Default",
+        "themeSettingsPageTile2": "Light Theme",
+        "themeSettingsPageTile3": "Dark Theme"
 }

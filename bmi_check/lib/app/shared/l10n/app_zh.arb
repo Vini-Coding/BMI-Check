@@ -65,6 +65,7 @@
     "languageSettingsPageTitle": "语言",
     "themeSettingsListTile": "主题",
     "themeSettingsPageTitle": "主题",
-    "themeSettingsPageTile1": "浅色主题",
-    "themeSettingsPageTile2": "深色主题"
+    "pageTileSystemDefault": "系统默认",
+    "themeSettingsPageTile2": "浅色主题",
+    "themeSettingsPageTile3": "深色主题"
 }
