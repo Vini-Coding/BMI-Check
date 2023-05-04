@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SettingsLanguageController extends ValueNotifier {
-  SettingsLanguageController() : super(3);
+  SettingsLanguageController() : super(0);
 
   void setValue(int newValue) {
     value = newValue;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bmi_check/app/shared/l10n/l10n.dart';
 
 class LanguageController extends ValueNotifier<Locale?> {
-  LanguageController() : super(const Locale('en'));
+  LanguageController() : super(WidgetsBinding.instance.window.locale);
 
   Locale get locale => value!;
 
@@ -16,5 +16,9 @@ class LanguageController extends ValueNotifier<Locale?> {
 
   void clearLocale() {
     value = null;
+  }
+
+  void getSystemLocale() {
+    value = WidgetsBinding.instance.window.locale;
   }
 }

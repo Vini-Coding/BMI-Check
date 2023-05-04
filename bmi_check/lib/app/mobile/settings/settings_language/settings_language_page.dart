@@ -64,6 +64,23 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                     children: [
                       RadioListTile(
                         title: Text(
+                          AppLocalizations.of(context)!.pageTileSystemDefault,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: 0,
+                        groupValue: settingsLanguageController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (val) {
+                          setState(
+                            () {
+                              languageController.getSystemLocale();
+                              settingsLanguageController.value = val;
+                            },
+                          );
+                        },
+                      ),
+                      RadioListTile(
+                        title: Text(
                           "普通话 ${Flags.china}",
                           style: textTheme.bodyMedium,
                         ),

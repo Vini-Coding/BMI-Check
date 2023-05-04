@@ -3,6 +3,7 @@ import 'package:bmi_check/app/shared/dependencies/register_dependencies.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   registerDependencies();
   runApp(BmiCheckApp());
-} 
+}

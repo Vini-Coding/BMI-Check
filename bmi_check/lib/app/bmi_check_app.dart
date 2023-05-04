@@ -30,6 +30,13 @@ class BmiCheckApp extends StatelessWidget {
         return ValueListenableBuilder(
           valueListenable: languageController,
           builder: (context, languageValue, child) {
+            // void loadLocaleFromSettings(BuildContext context) {
+            //   WidgetsBinding.instance.addPostFrameCallback(
+            //     (timeStamp) {
+            //       languageController.getSystemLocale(context);
+            //     },
+            //   );
+            // }
             return MaterialApp(
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: L10n.all,
@@ -40,7 +47,10 @@ class BmiCheckApp extends StatelessWidget {
               themeMode: themeValue,
               initialRoute: IntroPage.routeName,
               routes: {
-                IntroPage.routeName: (context) => const IntroPage(),
+                IntroPage.routeName: (context) {
+                  // loadLocaleFromSettings(context);
+                  return const IntroPage();
+                },
                 HomePage.routeName: (context) => const HomePage(),
                 ResultPage.routeName: (context) => const ResultPage(),
                 SettingsPage.routeName: (context) => const SettingsPage(),
