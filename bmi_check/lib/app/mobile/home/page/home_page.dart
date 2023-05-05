@@ -38,11 +38,13 @@ class _HomePageState extends State<HomePage> {
           upperIdealWeightLimit: controller.upperIdealWeightLimit,
           sex: controller.sexController.value,
         ),
-      );
+      ); 
     }
 
+       
     void goToSettings() {
       Navigator.pushReplacementNamed(context, SettingsPage.routeName);
+       
     }
 
     return Scaffold(

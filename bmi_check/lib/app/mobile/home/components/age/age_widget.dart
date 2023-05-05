@@ -1,11 +1,9 @@
 import 'package:bmi_check/app/mobile/home/components/age/age_controller.dart';
-import 'package:bmi_check/app/mobile/home/components/age/exceptions/over_age_limit_exception.dart';
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class AgeWidget extends StatefulWidget {
   const AgeWidget({required this.ageController, super.key});
@@ -20,8 +18,6 @@ class _AgeWidgetState extends State<AgeWidget> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
-    int minAge = widget.ageController.minAge;
-    int maxAge = widget.ageController.maxAge;
 
     return ValueListenableBuilder(
       valueListenable: widget.ageController,
@@ -51,15 +47,13 @@ class _AgeWidgetState extends State<AgeWidget> {
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
+                  onChanged: (String newValueInTextField) {
+                    widget.ageController.onChanged(newValueInTextField);
+                  },
                   onSubmitted: (String ageSubmitted) {
                     try {
-                      widget.ageController.age = int.tryParse(ageSubmitted);
+                      widget.ageController.onSubmitted(ageSubmitted);
                     } on HandledException catch (exception) {
-                      if (exception is OverAgeLimitException) {
-                        widget.ageController.age = maxAge;
-                      } else {
-                        widget.ageController.age = minAge;
-                      }
                       showErrorSnackBar(
                         context: context,
                         exceptionText: exception.parseString(context),

@@ -18,14 +18,17 @@ class AgeController extends ValueNotifier<int?> {
   }
 
   set age(int? age) {
-    ageValidate(age.toString());
-    value = age!.round();
-    ageTextField.text = age.toInt().toString();
+    if (age != null) {
+      value = age.round();
+    } else {
+      null;
+    }
   }
 
   void increment() {
     if (age! < 120) {
       age = age! + 1;
+      ageTextField.text = age.toString();
     } else {
       null;
     }
@@ -34,6 +37,7 @@ class AgeController extends ValueNotifier<int?> {
   void decrement() {
     if (age! > 0) {
       age = age! - 1;
+      ageTextField.text = age.toString();
     } else {
       null;
     }
@@ -41,14 +45,29 @@ class AgeController extends ValueNotifier<int?> {
 
   void ageValidate(String valueController) {
     if (valueController.isEmpty || int.tryParse(valueController) == null) {
+      age = minAge;
+      ageTextField.text = minAge.toString();
       throw NullAgeException();
     } else if (int.tryParse(valueController)!.round() < 0) {
+      age = minAge;
+      ageTextField.text = minAge.toString();
       throw UnderAgeLimitException();
     } else if (int.tryParse(valueController)!.round() > 120) {
+      age = maxAge;
+      ageTextField.text = maxAge.toString();
       throw OverAgeLimitException();
     } else if (valueController is double) {
       age = int.tryParse(valueController)!.round();
       throw NullAgeException();
     }
+  }
+
+  void onSubmitted(String valueController) {
+    ageValidate(valueController);
+    age = int.tryParse(valueController);
+  }
+
+  void onChanged(String newChange) {
+    age = int.tryParse(newChange);
   }
 }

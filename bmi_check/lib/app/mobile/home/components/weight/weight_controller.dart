@@ -11,7 +11,7 @@ class WeightController extends ValueNotifier<double?> {
 
   final SettingsWeightController controller =
       Injector.appInstance.get<SettingsWeightController>();
-      
+
   double minWeight = 0;
   double get maxWeight {
     switch (controller.weightMetric) {
@@ -44,14 +44,17 @@ class WeightController extends ValueNotifier<double?> {
   }
 
   set weight(double? weight) {
-    weightValidate(weight.toString());
-    value = weight!;
-    weightTextField.text = weight.toStringAsPrecision(3);
+    if (weight != null) {
+      value = weight;
+    } else {
+      null;
+    }
   }
 
   void increment() {
     if (weight! <= maxWeight) {
       weight = weight! + 1;
+      weightTextField.text = weight!.toStringAsPrecision(4);
     } else {
       null;
     }
@@ -60,6 +63,7 @@ class WeightController extends ValueNotifier<double?> {
   void decrement() {
     if (weight! > 0) {
       weight = weight! - 1;
+      weightTextField.text = weight!.toStringAsPrecision(4);
     } else {
       null;
     }
@@ -67,11 +71,26 @@ class WeightController extends ValueNotifier<double?> {
 
   void weightValidate(String valueController) {
     if (valueController.isEmpty || double.tryParse(valueController) == null) {
+      weight = minWeight;
+      weightTextField.text = minWeight.toStringAsPrecision(4);
       throw NullWeightException();
     } else if (double.tryParse(valueController)! < minWeight) {
+      weight = minWeight;
+      weightTextField.text = minWeight.toStringAsPrecision(4);
       throw UnderWeightLimitException();
     } else if (double.tryParse(valueController)! > maxWeight) {
+      weight = maxWeight;
+      weightTextField.text = maxWeight.toStringAsPrecision(4);
       throw OverWeightLimitException();
     }
+  }
+
+  void onSubmitted(String valueController) {
+    weightValidate(valueController);
+    weight = double.tryParse(valueController);
+  }
+
+  void onChanged(String newChange) {
+    weight = double.tryParse(newChange);
   }
 }

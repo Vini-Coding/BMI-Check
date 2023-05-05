@@ -1,4 +1,3 @@
-import 'package:bmi_check/app/mobile/home/components/height/exceptions/over_height_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/height/height_selection_controller.dart';
 import 'package:bmi_check/app/mobile/settings/settings_height/controller/settings_height_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
@@ -62,16 +61,9 @@ class _HeightSelectionWidgetState extends State<HeightSelectionWidget> {
                       ),
                       onSubmitted: (String heightSubmitted) {
                         try {
-                          widget.heightSelectionController.height =
-                              double.tryParse(
-                            heightSubmitted,
-                          );
+                          widget.heightSelectionController
+                              .onSubmitted(heightSubmitted);
                         } on HandledException catch (exception) {
-                          if (exception is OverHeightLimitException) {
-                            widget.heightSelectionController.height = maxHeight;
-                          } else {
-                            widget.heightSelectionController.height = minHeight;
-                          }
                           showErrorSnackBar(
                             context: context,
                             exceptionText: exception.parseString(context),

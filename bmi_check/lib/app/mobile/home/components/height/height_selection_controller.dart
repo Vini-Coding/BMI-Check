@@ -72,13 +72,13 @@ class HeightSelectionController extends ValueNotifier<double?> {
   }
 
   set height(double? height) {
-    heightValidate(height.toString());
     value = height;
     heightTextField.text = height!.toStringAsPrecision(3);
   }
 
   void onChanged(double sliderValue) {
     height = sliderValue;
+    heightTextField.text = height!.toStringAsPrecision(3);
   }
 
   void increment() {
@@ -86,6 +86,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.feet:
         if (height! < maxHeight) {
           height = height! + 0.01;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -93,6 +94,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.inches:
         if (height! < maxHeight) {
           height = height! + 0.1;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -100,6 +102,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.meters:
         if (height! < maxHeight) {
           height = height! + 0.01;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -107,6 +110,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.centimeters:
         if (height! < maxHeight) {
           height = height! + 1;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -114,6 +118,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       default:
         if (height! < maxHeight) {
           height = height! + 0.01;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -126,6 +131,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.feet:
         if (height! > minHeight) {
           height = height! - 0.01;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -133,6 +139,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.inches:
         if (height! > minHeight) {
           height = height! - 0.1;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -140,6 +147,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.meters:
         if (height! > minHeight) {
           height = height! - 0.01;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -147,6 +155,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       case HeightMetrics.centimeters:
         if (height! > minHeight) {
           height = height! - 1;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -154,6 +163,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
       default:
         if (height! > minHeight) {
           height = height! - 0.01;
+          heightTextField.text = height!.toStringAsPrecision(3);
         } else {
           null;
         }
@@ -161,14 +171,25 @@ class HeightSelectionController extends ValueNotifier<double?> {
     }
   }
 
-  void heightValidate(String height) {
-    if (height.isEmpty || double.tryParse(height) == null) {
+  void heightValidate(String heightToValidate) {
+    if (heightToValidate.isEmpty || double.tryParse(heightToValidate) == null) {
+      height = minHeight;
+      heightTextField.text = minHeight.toStringAsPrecision(3);
       throw NullHeightException();
-    } else if (double.tryParse(height)! >= 0 &&
-        double.tryParse(height)! < minHeight) {
+    } else if (double.tryParse(heightToValidate)! >= 0 &&
+        double.tryParse(heightToValidate)! < minHeight) {
+      height = minHeight;
+      heightTextField.text = minHeight.toStringAsPrecision(3);
       throw UnderHeightLimitException();
-    } else if (double.tryParse(height)! > maxHeight) {
+    } else if (double.tryParse(heightToValidate)! > maxHeight) {
+      height = maxHeight;
+      heightTextField.text = maxHeight.toStringAsPrecision(3);
       throw OverHeightLimitException();
     }
+  }
+
+  void onSubmitted(String valueController) {
+    heightValidate(valueController);
+    height = double.tryParse(valueController);
   }
 }

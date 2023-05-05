@@ -61,17 +61,13 @@ class _WeightWidgetState extends State<WeightWidget> {
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
+                  onChanged: (newChange) {
+                    widget.weightController.onChanged(newChange);
+                  },
                   onSubmitted: (String submittedText) {
                     try {
-                      widget.weightController.weight = double.tryParse(
-                        submittedText,
-                      );
+                      widget.weightController.onSubmitted(submittedText);
                     } on HandledException catch (exception) {
-                      if (exception is OverWeightLimitException) {
-                        widget.weightController.weight = minWeight;
-                      } else {
-                        widget.weightController.weight = minWeight;
-                      }
                       showErrorSnackBar(
                         context: context,
                         exceptionText: exception.parseString(context),

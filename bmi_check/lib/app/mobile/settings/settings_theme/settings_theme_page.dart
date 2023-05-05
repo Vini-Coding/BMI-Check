@@ -73,6 +73,7 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                           });
                         },
                       ),
+                      const SizedBox(height: 10),
                       RadioListTile(
                         title: Text(
                           AppLocalizations.of(context)!.themeSettingsPageTile2,

@@ -79,6 +79,7 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                           );
                         },
                       ),
+                      const SizedBox(height: 10),
                       RadioListTile(
                         title: Text(
                           "普通话 ${Flags.china}",

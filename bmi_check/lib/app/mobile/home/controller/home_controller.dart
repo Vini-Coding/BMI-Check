@@ -1,6 +1,13 @@
 import 'package:bmi_check/app/mobile/home/components/age/age_controller.dart';
+import 'package:bmi_check/app/mobile/home/components/age/exceptions/null_age_exception.dart';
+import 'package:bmi_check/app/mobile/home/components/age/exceptions/over_age_limit_exception.dart';
+import 'package:bmi_check/app/mobile/home/components/height/exceptions/null_height_exception.dart';
+import 'package:bmi_check/app/mobile/home/components/height/exceptions/over_height_limit_exception.dart';
+import 'package:bmi_check/app/mobile/home/components/height/exceptions/under_height_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/height/height_selection_controller.dart';
 import 'package:bmi_check/app/mobile/home/components/sex/sex_selection_widget_controller.dart';
+import 'package:bmi_check/app/mobile/home/components/weight/exceptions/null_weight_exception.dart';
+import 'package:bmi_check/app/mobile/home/components/weight/exceptions/over_weight_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/weight/weight_controller.dart';
 import 'package:bmi_check/app/mobile/home/exceptions/empty_age_exception.dart';
 import 'package:bmi_check/app/mobile/home/exceptions/empty_weight_exception.dart';
@@ -33,10 +40,32 @@ class HomeController extends ChangeNotifier {
   void validate() {
     if (sexController.value == null) {
       throw UnselectedSexException();
+    } else if (double.tryParse(heightController.heightTextField.text) == null) {
+      throw NullHeightException();
+    } else if (double.tryParse(heightController.heightTextField.text)! <
+        heightController.minHeight) {
+      throw UnderHeightLimitException();
+    } else if (double.tryParse(heightController.heightTextField.text)! >
+        heightController.maxHeight) {
+      throw OverHeightLimitException();
+    } else if (heightController.heightTextField.text.isEmpty) {
+      throw NullHeightException();
     } else if (ageController.value! <= 0) {
       throw EmptyAgeException();
-    } else if (weightController.value! <= 0) {
+    } else if (ageController.value! > 120) {
+      throw OverAgeLimitException();
+    } else if (ageController.value == null) {
+      throw EmptyAgeException();
+    } else if (int.tryParse(ageController.ageTextField.text) == null) {
+      throw NullAgeException();
+    } else if (weightController.value! <= weightController.minWeight) {
       throw EmptyWeightException();
+    } else if (weightController.value! > weightController.maxWeight) {
+      throw OverWeightLimitException();
+    } else if (weightController.value == null) {
+      throw NullWeightException();
+    } else if (double.tryParse(weightController.weightTextField.text) == null) {
+      throw NullWeightException();
     }
   }
 
@@ -116,9 +145,9 @@ class HomeController extends ChangeNotifier {
         upperIdealNumberWeightLimit =
             kilogramsToPounds(upperIdealNumberWeightLimit);
         lowerIdealWeightLimit =
-            lowerIdealNumberWeightLimit.toStringAsPrecision(2);
+            lowerIdealNumberWeightLimit.toStringAsPrecision(4);
         upperIdealWeightLimit =
-            "${upperIdealNumberWeightLimit.toStringAsPrecision(2)} lb";
+            "${upperIdealNumberWeightLimit.toStringAsPrecision(4)} lb";
         return;
       default:
         lowerIdealNumberWeightLimit = 18.5 * (height * height);
