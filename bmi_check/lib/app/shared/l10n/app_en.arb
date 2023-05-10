@@ -8,7 +8,7 @@
         "@titleIntroPage1": {
                 "description":"Title of the first Introduction Page."
         },
-        "bodyIntroPage1": "Discover if you have the ideal body mass index in asimple and fast way and share with your friends",
+        "bodyIntroPage1": "Discover if you have the ideal weight and body mass index in a simple and fast way and share with your friends",
         "@bodyIntroPage1": {
                 "description": "Body text of the first Introduction Page."
         },
@@ -37,11 +37,26 @@
                 "description": "Get Started button"
         },
         
-        "appTitle": "BMI\nCheck", 
+        "appTitle": "BMI\nCheck",
+        "@appTitle": {
+                "description": "App Title in HomePage"
+        }, 
         "selectSexPrompt": "Select your sex",
+        "@selectSexPrompt": {
+                "description": "Prompt for sex selection widget in HomePage"
+        },
         "feminineSex": "Feminine",
+        "@feminineSex": {
+                "description": "Feminine sex card title in HomePage"
+        },
         "masculineSex": "Masculine",
+        "@masculineSex": {
+                "description": "Masculine sex card title in HomePage"
+        },
         "selectHeightPrompt": "Select your height in",
+        "@selectHeightPrompt": {
+                "description": "Prompt for Height selection widget in HomePage"
+        },
         "heightMetric": " {heightMetric}:",
         "@heightMetric": {
                 "description": "Metric of the height widget",
@@ -52,7 +67,13 @@
                 }
         },
         "age": "Age",
+        "@age": {
+                "description": "Age Card Title in HomePage"
+        },
         "weight": "Weight ",
+        "@weight": {
+                "description": "Weight Card Title in HomePage"
+        },
         "weightMetric": "({weightMetric})",
         "@weightMetric": {
                 "description": "Metric of the weight widget",
@@ -63,14 +84,38 @@
                 }
         },
         "calculateButton": "Calculate",
+        "@calculateButton": {
+                "description": "Text of Calculate Button in HomePage"
+        },
         
         "unselectedSexException": "Choose your sex",
+        "@unselectedSexException": {
+                "description": "Text that will be showed in the error snackbar of Unselected sex Exception"
+        },
         "emptyAgeException":"Insert a valid age",
-        "emptyWeightException": "Insert a valid weight",        
+        "@emptyAgeException": {
+                "description": "Text that will be showed in the error snackbar of Empty Age Exception"
+        },
+        "emptyWeightException": "Insert a valid weight",
+        "@emptyWeightException": {
+                "description": "Text that will be showed in the error snackbar of Empty Weight Exception"
+        },        
         "nullAgeException": "Insert a valid age",
+        "@nullAgeException": {
+                "description": "Text that will be showed in the error snackbar of Null Age Exception"
+        },
         "overAgeLimitException": "The age must be under 120",
+        "@overAgeLimitException": {
+                "description": "Text that will be showed in the error snackbar of Over Age Limit Exception"
+        },
         "underAgeLimitException": "The age must be over 0",
+        "@underAgeLimitException": {
+                "description": "Text that will be showed in the error snackbar of Under Age Limit Exception"
+        },
         "nullHeightException": "Insert a valid height",
+        "@nullHeightException": {
+                "description": "Text that will be showed in the error snackbar of Null Height Exception"
+        },
         "overHeightLimitException": "The height must be under {maxHeight}",
         "@overHeightLimitException": {
                 "description": "Text for SnackBar of an Exception caused by an invalid value in the weight field. It is invalid cause it ultrapasses the human overheight limit.",
@@ -90,6 +135,9 @@
                 }
         },
         "nullWeightException": "Insert a valid weight",
+        "@nullWeightException": {
+                "description": "Text that will be showed in the error snackbar of Null Weight Exception"
+        },
         "overWeightLimitException": "The weight must be under {maxWeight}",
         "@overWeightLimitException": {
                 "description": "Text for SnackBar of an Exception caused by an invalid value in the weight field. It is invalid cause it ultrapasses the human overweight limit.",
@@ -100,19 +148,58 @@
                 }
         },
         "underWeightLimitException": "The weight must be over 0",
+        "@underWeightLimitException": {
+                "description": "Text that will be showed in the error snackbar of Under Weight Limit Exception"
+        },
         
         "idealResultTitle": "Ideal BMI",
+        "@idealResultTitle": {
+                "description": "Title of the Ideal Result in Result Page"
+        },
         "idealResultDescription": "You have the ideal body mass index. In this case, there is harmony between weight and height, that is, with regard to food and health, the person has made correct choices. That's because a balanced diet and enough exercise help keep in shape. \n We recommend you to keep a healthy lifestyle...",
+        "@idealResultDescription": {
+                "description": "Description of the Ideal Result in Result Page"
+        },
         "underWeightResultTitle": "Underweight",
+        "@underWeightResultTitle": {
+                "description": "Title of Underweight Result in Result Page"
+        },
         "underWeightResultDescription": "You are underweight! This index can be caused by a voluntary decision, such as food deprivation, or eating behavior disorders, such as anorexia and bulimia. In addition, can be caused by metabolic diseases, parasites, inflammatory bowel diseases, food intolerances or psychic factors, such as stress.\n We recommend you to search a nutritionist...",
+        "@underWeightResultDescription": {
+                "description": "Description of Underweight Result in Result Page"
+        },
         "overWeightResultTitle": "Overweight",
+        "@overWeightResultTitle": {
+                "description": "Title of Overweight Result in Result Page"
+        },
         "overWeightResultDescription": "You are overweight. Being overweight means having more weight than is considered a normal or healthy weight for your age or size. Although an overweight person carries excess weight, he may or may not have excessive fat accumulation. However, you will always be above your ideal weight. \n We recommend you to add more healthy habits in your lifestyle.",
+        "@overWeightResultDescription": {
+                "description": "Description of Overweight Result in Result Page"
+        },
         "obesity1ResultTitle": "Grade 1 of Obesity",
+        "@obesity1ResultTitle": {
+                "description": "Title of Obesity grade 1 Result in Result Page"
+        },
         "obesity1ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...",
+        "@obesity1ResultDescription": {
+                "description": "Description of Obesity grade 1 Result in Result Page"
+        },
         "obesity2ResultTitle": "Grade 2 of Obesity",
+        "@obesity2ResultTitle": {
+                "description": "Title of Obesity grade 2 Result in Result Page"
+        },
         "obesity2ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...", 
+        "@obesity2ResultDescription": {
+                "description": "Description of Obesity grade 2 Result in Result Page"
+        },
         "obesity3ResultTitle": "Grade 3 of Obesity",
+        "@obesity3ResultTitle": {
+                "description": "Title of Obesity grade 3 Result in Result Page"
+        },
         "obesity3ResultDescription": "Obesity is associated with several complications in different body systems. The following can be cited: type 2 diabetes mellitus due to high glucose; gestational diabetes; cholesterol diseases, systemic arterial hypertension; heart diseases; sleep apnea; liver diseases; some types of cancer, anxiety and depression; among others. \nWe recommend you to search a nutritionist...",
+        "@obesity3ResultDescription": {
+                "description": "Description of Obesity grade 3 Result in Result Page"
+        },
         "idealWeightText": "PS: Your ideal weight is between {lowerIdealWeightLimit} and {upperIdealWeightLimit}",
         "@idealWeightText": {
                 "description": "Text that reveals the ideal weight of a Person.",
@@ -126,25 +213,84 @@
                 }
         },
         "shareButton": "Share",
+        "@shareButton": {
+                "description": "Text of Share Button in Result Page"
+        },
         "shareText": "Look at my BMI! You can check yours in BMI Check!",
-
+        "@shareText": {
+                "description": "Default Sharing Text"
+        },
 
         "settingsPageTitle": "Settings",
+        "@settingsPageTitle": {
+                "description": "Title of Settings Page"
+        },
         "heightMetricsListTile": "Height Metrics",
+        "@heightMetricsListTile": {
+                "description": "List Tile of Height Metrics Settings"
+        },
         "heightSettingsPageTitle": "Height Metrics\nSettings",
+        "@heightSettingsPageTitle": {
+                "description": "Title of Height Settings Page"
+        },
         "heightSettingsPageTile1": "Feet (ft)",
+        "@heightSettingsPageTile1": {
+                "description": "First List Tile of Height Settings Page"
+        },
         "heightSettingsPageTile2": "Inches (in)",
+        "@heightSettingsPageTile2": {
+                "description": "Second List Tile of Height Settings Page"
+        },
         "heightSettingsPageTile3": "Meters (m)",
+        "@heightSettingsPageTile3": {
+                "description": "Third List Tile of Height Settings Page"
+        },
         "heightSettingsPageTile4": "Centimeters (cm)",
+        "@heightSettingsPageTile4": {
+                "description": "Fourth List Tile of Height Settings Page"
+        },
         "weightMetricsListTile": "Weight Metrics",
+        "@weightMetricsListTile": {
+                "description": "List Tile of Weight Metrics Settings"
+        },
         "weightSettingsPageTitle": "Weight Metrics\nSettings",
+        "@weightSettingsPageTitle": {
+                "description": "Title of Weight Settings Page"
+        },
         "weightSettingsTile1": "Pounds (lb)",
+        "@weightSettingsTile1": {
+                "description": "First List Tile of Weight Settings Page"
+        },
         "weightSettingsTile2": "Kilograms (kg)",
+        "@weightSettingsTile2": {
+                "description": "Second List Tile of Weight Settings Page"
+        },
         "languageSettingsListTile": "Language",
+        "@languageSettingsTile1": {
+                "description": "First List Tile of Language Settings Page"
+        },
         "languageSettingsPageTitle": "Language",
+        "@languageSettingsPageTitle": {
+                "description": "Title of Language Settings Page"
+        },
         "themeSettingsListTile": "Theme",
+        "@themeSettingsListTile": {
+                "description": "List Tile of Theme Settings Page"
+        },
         "themeSettingsPageTitle": "Theme Settings",
+        "@themeSettingsPageTitle": {
+                "description": "Title of Theme Settings Page"
+        },
         "pageTileSystemDefault": "System Default",
+        "@pageTileSystemDefault": {
+                "description": "Text of Default Page Tiles that get the option by User's System"
+        },
         "themeSettingsPageTile2": "Light Theme",
-        "themeSettingsPageTile3": "Dark Theme"
+        "@themeSettingsPageTile2": {
+                "description": "Second List Tile of Theme Settings Page"
+        },
+        "themeSettingsPageTile3": "Dark Theme",
+        "@themeSettingsPageTile3": {
+                "description": "Last List Tile of Theme Settings Page"
+        }
 }

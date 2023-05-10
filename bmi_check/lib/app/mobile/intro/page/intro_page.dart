@@ -34,8 +34,10 @@ class _IntroPageState extends State<IntroPage> {
       isBottomSafeArea: true,
       globalBackgroundColor: Theme.of(context).colorScheme.background,
       scrollPhysics: const BouncingScrollPhysics(),
-      skip:
-          Text(AppLocalizations.of(context)!.skip, style: textTheme.labelSmall),
+      skip: Text(
+        AppLocalizations.of(context)!.skip,
+        style: textTheme.labelSmall,
+      ),
       next: FaIcon(
         FontAwesomeIcons.arrowRightLong,
         color: Theme.of(context).primaryColor,
@@ -43,14 +45,12 @@ class _IntroPageState extends State<IntroPage> {
       onSkip: goToHome,
       rawPages: [
         IntroPageWidget(
-          isLastPage: false,
           imagePath: 'assets/vectors/intro1.png',
           title: AppLocalizations.of(context)!.titleIntroPage1,
           bodyText: AppLocalizations.of(context)!.bodyIntroPage1,
           onPressed: goToHome,
         ),
         IntroPageWidget(
-          isLastPage: false,
           imagePath: 'assets/vectors/intro2.png',
           title: AppLocalizations.of(context)!.titleIntroPage2,
           bodyText: AppLocalizations.of(context)!.bodyIntroPage2,

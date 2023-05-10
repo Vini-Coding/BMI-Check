@@ -14,7 +14,7 @@ class LanguageController extends ValueNotifier<Locale> {
     }
   }
 
-  void getSystemLocale() {
+  void setSystemLocale() {
     value = WidgetsBinding.instance.window.locale;
   }
 }

@@ -53,41 +53,40 @@ class _ResultPageState extends State<ResultPage> {
                 Expanded(
                   child: SingleChildScrollView(
                     child: Center(
-                      child: Expanded(
-                        child: SingleChildScrollView(
-                          child: Screenshot(
-                            controller: resultController.screenshotController,
-                            child: Container(
-                              padding: const EdgeInsets.all(20),
-                              color: colorScheme.background,
-                              child: Column(
-                                children: [
-                                  Text(
-                                    resultController.result.result(context).title,
-                                    style: textTheme.displayLarge,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Text(
-                                    arguments.bmi.toStringAsPrecision(3),
-                                    style: textTheme.displayMedium!
-                                        .copyWith(fontSize: 150),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Text(
-                                    resultController.result
-                                        .result(context)
-                                        .description,
-                                    style: textTheme.bodyMedium,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Text(
-                                    AppLocalizations.of(context)!.idealWeightText(arguments.lowerIdealWeightLimit, arguments.upperIdealWeightLimit),
-                                    style: textTheme.displaySmall,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
+                      child: Screenshot(
+                        controller: resultController.screenshotController,
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          color: colorScheme.background,
+                          child: Column(
+                            children: [
+                              Text(
+                                resultController.result.result(context).title,
+                                style: textTheme.displayLarge,
+                                textAlign: TextAlign.center,
                               ),
-                            ),
+                              Text(
+                                arguments.bmi.toStringAsPrecision(3),
+                                style: textTheme.displayMedium!
+                                    .copyWith(fontSize: 150),
+                                textAlign: TextAlign.center,
+                              ),
+                              Text(
+                                resultController.result
+                                    .result(context)
+                                    .description,
+                                style: textTheme.bodyMedium,
+                                textAlign: TextAlign.center,
+                              ),
+                              Text(
+                                AppLocalizations.of(context)!.idealWeightText(
+                                  arguments.lowerIdealWeightLimit,
+                                  arguments.upperIdealWeightLimit,
+                                ),
+                                style: textTheme.displaySmall,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -103,7 +102,9 @@ class _ResultPageState extends State<ResultPage> {
                       double pixelRatio =
                           MediaQuery.of(context).devicePixelRatio;
                       resultController.onShare(
-                          pixelRatio: pixelRatio, shareText: shareText);
+                        pixelRatio: pixelRatio,
+                        shareText: shareText,
+                      );
                     },
                   ),
                 ),

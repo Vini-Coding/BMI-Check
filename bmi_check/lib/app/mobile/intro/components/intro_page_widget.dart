@@ -4,11 +4,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IntroPageWidget extends StatelessWidget {
   const IntroPageWidget({
-    required this.isLastPage,
+    this.isLastPage = false,
     required this.imagePath,
     required this.title,
     required this.bodyText,
-    required this.onPressed,
+    this.onPressed,
     super.key,
   });
 
@@ -16,68 +16,45 @@ class IntroPageWidget extends StatelessWidget {
   final String title;
   final String bodyText;
   final bool isLastPage;
-  final Future<void> Function() onPressed;
+  final Future<void> Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    if (isLastPage) {
-      return Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 80),
-            Image.asset(
-              imagePath,
-              height: 368,
-              width: 368,
-            ),
-            const SizedBox(height: 30),
-            Text(
-              title,
-              style: textTheme.displayLarge,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.fade,
-            ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Text(bodyText,
-                  style: textTheme.bodyMedium, textAlign: TextAlign.center),
-            ),
-            const SizedBox(height: 40),
+    return Center(
+      child: Column(
+        children: [
+          const SizedBox(height: 80),
+          Image.asset(
+            imagePath,
+            height: 368,
+            width: 368,
+          ),
+          const SizedBox(height: 30),
+          Text(
+            title,
+            style: textTheme.displayLarge,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.fade,
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Text(bodyText,
+                style: textTheme.bodyMedium, textAlign: TextAlign.center),
+          ),
+          const SizedBox(height: 40),
+          if (isLastPage && onPressed != null)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: GeneralButtonWidget(
-                onPressed: onPressed,
+                onPressed: onPressed!,
                 text: AppLocalizations.of(context)!.getStartedButton,
               ),
             ),
-          ],
-        ),
-      );
-    } else {
-      return Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 120),
-            Image.asset(
-              imagePath,
-              height: 368,
-              width: 368,
-            ),
-            const SizedBox(height: 30),
-            Text(title,
-                style: textTheme.displayLarge, textAlign: TextAlign.center),
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Text(bodyText,
-                  style: textTheme.bodyMedium, textAlign: TextAlign.center),
-            ),
-          ],
-        ),
-      );
-    }
+        ],
+      ),
+    );
   }
 }

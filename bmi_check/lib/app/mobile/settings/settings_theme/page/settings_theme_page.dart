@@ -1,25 +1,27 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_weight/controller/settings_weight_controller.dart';
-import 'package:bmi_check/app/mobile/settings/settings_weight/enum/weight_metrics_enum.dart';
+import 'package:bmi_check/app/mobile/settings/settings_theme/controller/settings_theme_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
+import 'package:bmi_check/app/shared/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:injector/injector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SettingsWeightPage extends StatefulWidget {
-  static const routeName = '/settingsWeight';
-  const SettingsWeightPage({super.key});
+class SettingsThemePage extends StatefulWidget {
+  static const routeName = '/themesettings';
+  const SettingsThemePage({super.key});
 
   @override
-  State<SettingsWeightPage> createState() => _SettingsWeightPageState();
+  State<SettingsThemePage> createState() => _SettingsThemePageState();
 }
 
-class _SettingsWeightPageState extends State<SettingsWeightPage> {
+class _SettingsThemePageState extends State<SettingsThemePage> {
   final IAppSettingsRepository settingsRepository =
       Injector.appInstance.get<IAppSettingsRepository>();
-  SettingsWeightController controller =
-      Injector.appInstance.get<SettingsWeightController>();
+  final ThemeController themeController =
+      Injector.appInstance.get<ThemeController>();
+  final SettingsThemeController settingsThemeController =
+      Injector.appInstance.get<SettingsThemeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -55,49 +57,72 @@ class _SettingsWeightPageState extends State<SettingsWeightPage> {
                           ),
                           Text(
                             AppLocalizations.of(context)!
-                                .weightSettingsPageTitle,
+                                .themeSettingsPageTitle,
                             style: textTheme.displayLarge,
-                            textAlign: TextAlign.right,
                           ),
                         ],
                       ),
                       const SizedBox(height: 80),
-                      RadioListTile<WeightMetrics>(
+                      RadioListTile<ThemeMode>(
                         title: Text(
-                          AppLocalizations.of(context)!.weightSettingsTile1,
+                          AppLocalizations.of(context)!.pageTileSystemDefault,
                           style: textTheme.bodyMedium,
                         ),
-                        value: WeightMetrics.pounds,
-                        groupValue: controller.value,
+                        value: ThemeMode.system,
+                        groupValue: settingsThemeController.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {
                           if (inputValue == null) return;
                           setState(
                             () {
-                              controller.value = inputValue;
+                              settingsThemeController.value = inputValue;
+                              themeController.getThemeSystem();
                               settingsRepository.updateSettings(
-                                weightMetricsSettings: inputValue,
+                                themeSettings: inputValue,
                               );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile<WeightMetrics>(
+                      RadioListTile<ThemeMode>(
                         title: Text(
-                          AppLocalizations.of(context)!.weightSettingsTile2,
+                          AppLocalizations.of(context)!.themeSettingsPageTile2,
                           style: textTheme.bodyMedium,
                         ),
-                        value: WeightMetrics.kilograms,
-                        groupValue: controller.value,
+                        value: ThemeMode.light,
+                        groupValue: settingsThemeController.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {
                           if (inputValue == null) return;
                           setState(
                             () {
-                              controller.value = inputValue;
+                              settingsThemeController.value = inputValue;
+                              themeController.toggleTheme(false);
                               settingsRepository.updateSettings(
-                                weightMetricsSettings: inputValue,
+                                themeSettings: inputValue,
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile<ThemeMode>(
+                        title: Text(
+                          AppLocalizations.of(context)!.themeSettingsPageTile3,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: ThemeMode.dark,
+                        groupValue: settingsThemeController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
+                          setState(
+                            () {
+                              settingsThemeController.value = inputValue;
+                              themeController.toggleTheme(true);
+                              settingsRepository.updateSettings(
+                                themeSettings: inputValue,
                               );
                             },
                           );

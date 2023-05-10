@@ -34,7 +34,7 @@ ThemeData darkTheme = ThemeData(
       color: darkColorScheme.outline,
     ),
     labelSmall: TextStyle(
-      fontSize: 18,
+      fontSize: 16,
       fontFamily: 'Varela Round',
       fontWeight: FontWeight.w500,
       color: darkColorScheme.primary,

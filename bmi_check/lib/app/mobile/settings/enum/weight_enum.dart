@@ -1,4 +1,0 @@
-enum Weight {
-  kilograms,
-  pounds,
-}

@@ -3,7 +3,6 @@ import 'package:bmi_check/app/mobile/settings/settings_language/controller/langu
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/settings_language_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
 import 'package:bmi_check/app/shared/l10n/flags.dart';
-import 'package:bmi_check/app/shared/preferences/repository/app_settings_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -64,7 +63,6 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                 const SizedBox(height: 80),
                 Expanded(
                   child: ListView(
-                    physics: const BouncingScrollPhysics(),
                     children: [
                       RadioListTile<Locale>(
                         title: Text(
@@ -78,7 +76,7 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                           if (inputValue == null) return;
                           setState(
                             () {
-                              languageController.getSystemLocale();
+                              languageController.setSystemLocale();
                               settingsLanguageController.value = inputValue;
                               settingsRepository.updateSettings(
                                 languageSettings: inputValue,

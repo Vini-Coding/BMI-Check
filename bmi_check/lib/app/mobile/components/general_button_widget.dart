@@ -25,11 +25,10 @@ class _GeneralButtonWidgetState extends State<GeneralButtonWidget> {
       height: 70,
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: onPressed ? colorScheme.secondary : colorScheme.primary,
+        color: colorScheme.primary,
         borderRadius: BorderRadius.circular(50),
       ),
-      child: TextButton(
-        
+      child: TextButton(        
         onPressed: widget.onPressed,
         child: Text(
           widget.text,

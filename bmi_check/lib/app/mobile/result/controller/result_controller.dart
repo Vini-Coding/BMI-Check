@@ -64,7 +64,8 @@ class ResultController extends ValueNotifier<double> {
     }
   }
 
-  Future<void> onShare({required double pixelRatio, required String shareText}) async {
+  Future<void> onShare(
+      {required double pixelRatio, required String shareText}) async {
     final Uint8List? screenshot = await screenshotController.capture(
       pixelRatio: pixelRatio,
       delay: const Duration(milliseconds: 10),
@@ -75,7 +76,9 @@ class ResultController extends ValueNotifier<double> {
     final File imageFile = await File("${directory.path}/mybmi.png").create();
 
     await imageFile.writeAsBytes(screenshot!);
-    await Share.shareXFiles([XFile(imageFile.path)],
-        text: shareText);
+    await Share.shareXFiles(
+      [XFile(imageFile.path)],
+      text: shareText,
+    );
   }
 }

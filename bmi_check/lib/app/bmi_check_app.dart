@@ -2,13 +2,12 @@ import 'package:bmi_check/app/mobile/home/page/home_page.dart';
 import 'package:bmi_check/app/mobile/intro/page/intro_page.dart';
 import 'package:bmi_check/app/mobile/result/page/result_page.dart';
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_height/settings_height_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_height/page/settings_height_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/language_controller.dart';
-import 'package:bmi_check/app/mobile/settings/settings_language/settings_language_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_theme/settings_theme_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_language/page/settings_language_page.dart';
+import 'package:bmi_check/app/mobile/settings/settings_theme/page/settings_theme_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_weight/page/settings_weight_page.dart';
 import 'package:bmi_check/app/shared/l10n/l10n.dart';
-import 'package:bmi_check/app/shared/preferences/repository/app_settings_repository.dart';
 import 'package:bmi_check/app/shared/themes/dark/dark_theme.dart';
 import 'package:bmi_check/app/shared/themes/light/light_theme.dart';
 import 'package:bmi_check/app/shared/themes/theme_controller.dart';
@@ -61,9 +60,7 @@ class _BmiCheckAppState extends State<BmiCheckApp> {
                   ? IntroPage.routeName
                   : HomePage.routeName,
               routes: {
-                IntroPage.routeName: (context) {
-                  return const IntroPage();
-                },
+                IntroPage.routeName: (context) => const IntroPage(),
                 HomePage.routeName: (context) => const HomePage(),
                 ResultPage.routeName: (context) => const ResultPage(),
                 SettingsPage.routeName: (context) => const SettingsPage(),

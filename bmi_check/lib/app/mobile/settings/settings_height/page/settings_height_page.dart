@@ -1,28 +1,25 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
-import 'package:bmi_check/app/mobile/settings/settings_theme/settings_theme_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_height/controller/settings_height_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_height/enum/height_metrics_enum.dart';
 import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
-import 'package:bmi_check/app/shared/preferences/repository/app_settings_repository.dart';
-import 'package:bmi_check/app/shared/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:injector/injector.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:injector/injector.dart';
 
-class SettingsThemePage extends StatefulWidget {
-  static const routeName = '/themesettings';
-  const SettingsThemePage({super.key});
+class SettingsHeightPage extends StatefulWidget {
+  static const routeName = '/settingsHeight';
+  const SettingsHeightPage({super.key});
 
   @override
-  State<SettingsThemePage> createState() => _SettingsThemePageState();
+  State<SettingsHeightPage> createState() => _SettingsHeightPageState();
 }
 
-class _SettingsThemePageState extends State<SettingsThemePage> {
+class _SettingsHeightPageState extends State<SettingsHeightPage> {
   final IAppSettingsRepository settingsRepository =
       Injector.appInstance.get<IAppSettingsRepository>();
-  final ThemeController themeController =
-      Injector.appInstance.get<ThemeController>();
-  final SettingsThemeController settingsThemeController =
-      Injector.appInstance.get<SettingsThemeController>();
+  final SettingsHeightController settingsHeightController =
+      Injector.appInstance.get<SettingsHeightController>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,72 +56,91 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                           ),
                           Text(
                             AppLocalizations.of(context)!
-                                .themeSettingsPageTitle,
+                                .heightSettingsPageTitle,
                             style: textTheme.displayLarge,
+                            textAlign: TextAlign.right,
                           ),
                         ],
                       ),
                       const SizedBox(height: 80),
-                      RadioListTile<ThemeMode>(
+                      RadioListTile<HeightMetrics>(
                         title: Text(
-                          AppLocalizations.of(context)!.pageTileSystemDefault,
+                          AppLocalizations.of(context)!.heightSettingsPageTile1,
                           style: textTheme.bodyMedium,
                         ),
-                        value: ThemeMode.system,
-                        groupValue: settingsThemeController.value,
+                        value: HeightMetrics.feet,
+                        groupValue: settingsHeightController.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {
                           if (inputValue == null) return;
                           setState(
                             () {
-                              settingsThemeController.value = inputValue;
-                              themeController.getThemeSystem();
+                              settingsHeightController.value = inputValue;
                               settingsRepository.updateSettings(
-                                themeSettings: inputValue,
+                                heightMetricsSettings: inputValue,
                               );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile<ThemeMode>(
+                      RadioListTile<HeightMetrics>(
                         title: Text(
-                          AppLocalizations.of(context)!.themeSettingsPageTile2,
+                          AppLocalizations.of(context)!.heightSettingsPageTile2,
                           style: textTheme.bodyMedium,
                         ),
-                        value: ThemeMode.light,
-                        groupValue: settingsThemeController.value,
+                        value: HeightMetrics.inches,
+                        groupValue: settingsHeightController.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {
                           if (inputValue == null) return;
                           setState(
                             () {
-                              settingsThemeController.value = inputValue;
-                              themeController.toggleTheme(false);
+                              settingsHeightController.value = inputValue;
                               settingsRepository.updateSettings(
-                                themeSettings: inputValue,
+                                heightMetricsSettings: inputValue,
                               );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile<ThemeMode>(
+                      RadioListTile<HeightMetrics>(
                         title: Text(
-                          AppLocalizations.of(context)!.themeSettingsPageTile3,
+                          AppLocalizations.of(context)!.heightSettingsPageTile3,
                           style: textTheme.bodyMedium,
                         ),
-                        value: ThemeMode.dark,
-                        groupValue: settingsThemeController.value,
+                        value: HeightMetrics.meters,
+                        groupValue: settingsHeightController.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {
                           if (inputValue == null) return;
                           setState(
                             () {
-                              settingsThemeController.value = inputValue;
-                              themeController.toggleTheme(true);
+                              settingsHeightController.value = inputValue;
                               settingsRepository.updateSettings(
-                                themeSettings: inputValue,
+                                heightMetricsSettings: inputValue,
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      RadioListTile<HeightMetrics>(
+                        title: Text(
+                          AppLocalizations.of(context)!.heightSettingsPageTile4,
+                          style: textTheme.bodyMedium,
+                        ),
+                        value: HeightMetrics.centimeters,
+                        groupValue: settingsHeightController.value,
+                        activeColor: colorScheme.primary,
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
+                          setState(
+                            () {
+                              settingsHeightController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                heightMetricsSettings: inputValue,
                               );
                             },
                           );

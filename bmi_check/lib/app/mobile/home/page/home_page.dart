@@ -38,20 +38,17 @@ class _HomePageState extends State<HomePage> {
           upperIdealWeightLimit: controller.upperIdealWeightLimit,
           sex: controller.sexController.value,
         ),
-      ); 
+      );
     }
 
-       
     void goToSettings() {
       Navigator.pushReplacementNamed(context, SettingsPage.routeName);
-       
     }
 
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,8 +59,10 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(AppLocalizations.of(context)!.appTitle,
-                          style: textTheme.displayLarge),
+                      Text(
+                        AppLocalizations.of(context)!.appTitle,
+                        style: textTheme.displayLarge,
+                      ),
                       IconButton(
                         icon: const FaIcon(FontAwesomeIcons.gear, size: 34),
                         onPressed: goToSettings,
@@ -72,10 +71,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-                  child: Text(AppLocalizations.of(context)!.selectSexPrompt,
-                      style: textTheme.bodyMedium),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5,
+                    horizontal: 30,
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context)!.selectSexPrompt,
+                    style: textTheme.bodyMedium,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
@@ -97,27 +100,36 @@ class _HomePageState extends State<HomePage> {
                         AppLocalizations.of(context)!.heightMetric(
                           controller.heightController.heightMetrics,
                         ),
-                        style: textTheme.bodyMedium!
-                            .copyWith(fontWeight: FontWeight.w700),
+                        style: textTheme.bodyMedium!.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 30,
+                  ),
                   child: HeightSelectionWidget(
-                      heightSelectionController: controller.heightController),
+                    heightSelectionController: controller.heightController,
+                  ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 20,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AgeWidget(ageController: controller.ageController),
+                      AgeWidget(
+                        ageController: controller.ageController,
+                      ),
                       WeightWidget(
-                          weightController: controller.weightController),
+                        weightController: controller.weightController,
+                      ),
                     ],
                   ),
                 ),
