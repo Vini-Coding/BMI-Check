@@ -91,11 +91,11 @@ class HomeController extends ChangeNotifier {
       height = height * 0.0254;
     }
 
-    if (weightMetricsController.weightMetric == WeightMetrics.pounds) {
+    if (weightMetricsController.value == WeightMetrics.pounds) {
       poundsToKilograms();
     }
 
-    switch (heightMetricsController.heightMetric) {
+    switch (heightMetricsController.value) {
       case HeightMetrics.feet:
         feetsToMeters();
         bmi = weight / (height * height);
@@ -128,7 +128,7 @@ class HomeController extends ChangeNotifier {
       return weightInPounds;
     }
 
-    switch (weightMetricsController.weightMetric) {
+    switch (weightMetricsController.value) {
       case WeightMetrics.kilograms:
         lowerIdealNumberWeightLimit = 18.5 * (height * height);
         upperIdealNumberWeightLimit = 24.9 * (height * height);

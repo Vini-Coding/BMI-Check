@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class SettingsThemeController extends ValueNotifier {
-  SettingsThemeController() : super(1);
+class SettingsThemeController extends ValueNotifier<ThemeMode>{
+  SettingsThemeController(ThemeMode initState) : super(initState);
 }

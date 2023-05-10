@@ -1,5 +1,6 @@
 import 'package:bmi_check/app/mobile/home/page/home_page.dart';
 import 'package:bmi_check/app/mobile/intro/components/intro_page_widget.dart';
+import 'package:bmi_check/app/mobile/intro/controller/intro_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -14,14 +15,18 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
-  void goToHome() {
-    Navigator.pushReplacementNamed(context, HomePage.routeName);
+  IntroController controller = IntroController();
+
+  Future<void> goToHome() async {
+    await controller.setFirstEntry();
+    if (mounted) {
+      Navigator.pushReplacementNamed(context, HomePage.routeName);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-
     return IntroductionScreen(
       showDoneButton: false,
       showSkipButton: true,
@@ -42,18 +47,21 @@ class _IntroPageState extends State<IntroPage> {
           imagePath: 'assets/vectors/intro1.png',
           title: AppLocalizations.of(context)!.titleIntroPage1,
           bodyText: AppLocalizations.of(context)!.bodyIntroPage1,
+          onPressed: goToHome,
         ),
         IntroPageWidget(
           isLastPage: false,
           imagePath: 'assets/vectors/intro2.png',
           title: AppLocalizations.of(context)!.titleIntroPage2,
           bodyText: AppLocalizations.of(context)!.bodyIntroPage2,
+          onPressed: goToHome,
         ),
         IntroPageWidget(
           isLastPage: true,
           imagePath: 'assets/vectors/intro3.png',
           title: AppLocalizations.of(context)!.titleIntroPage3,
           bodyText: AppLocalizations.of(context)!.bodyIntroPage3,
+          onPressed: goToHome,
         ),
       ],
       dotsDecorator: DotsDecorator(

@@ -1,5 +1,8 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_height/controller/settings_height_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_height/enum/height_metrics_enum.dart';
+import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
+import 'package:bmi_check/app/shared/preferences/repository/app_settings_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,6 +17,8 @@ class SettingsHeightPage extends StatefulWidget {
 }
 
 class _SettingsHeightPageState extends State<SettingsHeightPage> {
+  final IAppSettingsRepository settingsRepository =
+      Injector.appInstance.get<IAppSettingsRepository>();
   final SettingsHeightController settingsHeightController =
       Injector.appInstance.get<SettingsHeightController>();
 
@@ -51,69 +56,86 @@ class _SettingsHeightPageState extends State<SettingsHeightPage> {
                             ),
                           ),
                           Text(
-                            AppLocalizations.of(context)!.heightSettingsPageTitle,
+                            AppLocalizations.of(context)!
+                                .heightSettingsPageTitle,
                             style: textTheme.displayLarge,
                             textAlign: TextAlign.right,
                           ),
                         ],
                       ),
                       const SizedBox(height: 80),
-                      RadioListTile(
+                      RadioListTile<HeightMetrics>(
                         title: Text(
                           AppLocalizations.of(context)!.heightSettingsPageTile1,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 1,
+                        value: HeightMetrics.feet,
                         groupValue: settingsHeightController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(() {
-                            settingsHeightController.value = val;
+                            settingsHeightController.value = inputValue;
+                            settingsRepository.updateSettings(
+                              heightMetricsSettings: inputValue,
+                            );
                           });
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<HeightMetrics>(
                         title: Text(
                           AppLocalizations.of(context)!.heightSettingsPageTile2,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 2,
+                        value: HeightMetrics.inches,
                         groupValue: settingsHeightController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(() {
-                            settingsHeightController.value = val;
+                            settingsHeightController.value = inputValue;
+                            settingsRepository.updateSettings(
+                              heightMetricsSettings: inputValue,
+                            );
                           });
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<HeightMetrics>(
                         title: Text(
                           AppLocalizations.of(context)!.heightSettingsPageTile3,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 3,
+                        value: HeightMetrics.meters,
                         groupValue: settingsHeightController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(() {
-                            settingsHeightController.value = val;
+                            settingsHeightController.value = inputValue;
+                            settingsRepository.updateSettings(
+                              heightMetricsSettings: inputValue,
+                            );
                           });
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<HeightMetrics>(
                         title: Text(
                           AppLocalizations.of(context)!.heightSettingsPageTile4,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 4,
+                        value: HeightMetrics.centimeters,
                         groupValue: settingsHeightController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(() {
-                            settingsHeightController.value = val;
+                            settingsHeightController.value = inputValue;
+                            settingsRepository.updateSettings(
+                              heightMetricsSettings: inputValue,
+                            );
                           });
                         },
                       ),

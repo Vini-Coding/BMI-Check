@@ -1,4 +1,3 @@
-import 'package:bmi_check/app/mobile/home/components/weight/exceptions/over_weight_limit_exception.dart';
 import 'package:bmi_check/app/mobile/home/components/weight/weight_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/handled_exception.dart';
 import 'package:bmi_check/app/shared/utils/show_error_snack_bar.dart';
@@ -19,7 +18,6 @@ class _WeightWidgetState extends State<WeightWidget> {
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
-    double minWeight = widget.weightController.minWeight;
 
     return ValueListenableBuilder(
       valueListenable: widget.weightController,

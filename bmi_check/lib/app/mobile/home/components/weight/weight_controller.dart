@@ -14,7 +14,7 @@ class WeightController extends ValueNotifier<double?> {
 
   double minWeight = 0;
   double get maxWeight {
-    switch (controller.weightMetric) {
+    switch (controller.value) {
       case WeightMetrics.pounds:
         return 1323;
       case WeightMetrics.kilograms:
@@ -25,7 +25,7 @@ class WeightController extends ValueNotifier<double?> {
   }
 
   String get weightMetrics {
-    switch (controller.weightMetric) {
+    switch (controller.value) {
       case WeightMetrics.pounds:
         return "lb";
       case WeightMetrics.kilograms:

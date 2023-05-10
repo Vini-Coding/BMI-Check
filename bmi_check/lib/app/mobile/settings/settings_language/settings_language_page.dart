@@ -1,7 +1,9 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/language_controller.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/settings_language_controller.dart';
+import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
 import 'package:bmi_check/app/shared/l10n/flags.dart';
+import 'package:bmi_check/app/shared/preferences/repository/app_settings_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -16,6 +18,8 @@ class SettingsLanguagePage extends StatefulWidget {
 }
 
 class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
+  final IAppSettingsRepository settingsRepository =
+      Injector.appInstance.get<IAppSettingsRepository>();
   final LanguageController languageController =
       Injector.appInstance.get<LanguageController>();
   final SettingsLanguageController settingsLanguageController =
@@ -62,199 +66,243 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                   child: ListView(
                     physics: const BouncingScrollPhysics(),
                     children: [
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           AppLocalizations.of(context)!.pageTileSystemDefault,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 0,
+                        value: WidgetsBinding.instance.window.locale,
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.getSystemLocale();
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "普通话 ${Flags.china}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 1,
+                        value: const Locale('zh'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('zh'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "Deutsch ${Flags.germany}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 2,
+                        value: const Locale('de'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('de'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "English  ${Flags.usa}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 3,
+                        value: const Locale('en'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('en'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "Español ${Flags.spain}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 4,
+                        value: const Locale('es'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('es'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "Français ${Flags.france}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 5,
+                        value: const Locale('fr'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('fr'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "हिंदी ${Flags.india}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 6,
+                        value: const Locale('hi'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
-                              languageController.setLocale(const Locale('in'));
-                              settingsLanguageController.value = val;
+                              languageController.value = inputValue;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "Italiano ${Flags.italy}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 7,
+                        value: const Locale('it'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('it'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "日本 ${Flags.japan}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 8,
+                        value: const Locale('ja'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('ja'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "Português (Brasil) ${Flags.brazil}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 9,
+                        value: const Locale('pt'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('pt'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<Locale>(
                         title: Text(
                           "Русский ${Flags.russia}",
                           style: textTheme.bodyMedium,
                         ),
-                        value: 10,
+                        value: const Locale('ru'),
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(
                             () {
                               languageController.setLocale(const Locale('ru'));
-                              settingsLanguageController.value = val;
+                              settingsLanguageController.value = inputValue;
+                              settingsRepository.updateSettings(
+                                languageSettings: inputValue,
+                              );
                             },
                           );
                         },

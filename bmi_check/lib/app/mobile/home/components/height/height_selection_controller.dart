@@ -27,14 +27,14 @@ class HeightSelectionController extends ValueNotifier<double?> {
     }
   }
 
-  double get minHeight => _getMinHeight(controller.heightMetric);
+  double get minHeight => _getMinHeight(controller.value);
 
   void initValue() {
     value = minHeight;
   }
 
   double get maxHeight {
-    switch (controller.heightMetric) {
+    switch (controller.value) {
       case HeightMetrics.feet:
         return 8.20;
       case HeightMetrics.inches:
@@ -49,7 +49,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
   }
 
   String get heightMetrics {
-    switch (controller.heightMetric) {
+    switch (controller.value) {
       case HeightMetrics.feet:
         return "(ft)";
       case HeightMetrics.inches:
@@ -82,7 +82,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
   }
 
   void increment() {
-    switch (controller.heightMetric) {
+    switch (controller.value) {
       case HeightMetrics.feet:
         if (height! < maxHeight) {
           height = height! + 0.01;
@@ -127,7 +127,7 @@ class HeightSelectionController extends ValueNotifier<double?> {
   }
 
   void decrement() {
-    switch (controller.heightMetric) {
+    switch (controller.value) {
       case HeightMetrics.feet:
         if (height! > minHeight) {
           height = height! - 0.01;

@@ -1,5 +1,8 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_weight/controller/settings_weight_controller.dart';
+import 'package:bmi_check/app/mobile/settings/settings_weight/enum/weight_metrics_enum.dart';
+import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
+import 'package:bmi_check/app/shared/preferences/repository/app_settings_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,6 +17,8 @@ class SettingsWeightPage extends StatefulWidget {
 }
 
 class _SettingsWeightPageState extends State<SettingsWeightPage> {
+  final IAppSettingsRepository settingsRepository =
+      Injector.appInstance.get<IAppSettingsRepository>();
   SettingsWeightController controller =
       Injector.appInstance.get<SettingsWeightController>();
 
@@ -51,39 +56,48 @@ class _SettingsWeightPageState extends State<SettingsWeightPage> {
                             ),
                           ),
                           Text(
-                            AppLocalizations.of(context)!.weightSettingsPageTitle,
+                            AppLocalizations.of(context)!
+                                .weightSettingsPageTitle,
                             style: textTheme.displayLarge,
                             textAlign: TextAlign.right,
                           ),
                         ],
                       ),
                       const SizedBox(height: 80),
-                      RadioListTile(
+                      RadioListTile<WeightMetrics>(
                         title: Text(
                           AppLocalizations.of(context)!.weightSettingsTile1,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 1,
+                        value: WeightMetrics.pounds,
                         groupValue: controller.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(() {
                             controller.value = inputValue;
+                            settingsRepository.updateSettings(
+                              weightMetricsSettings: inputValue,
+                            );
                           });
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<WeightMetrics>(
                         title: Text(
                           AppLocalizations.of(context)!.weightSettingsTile2,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 2,
+                        value: WeightMetrics.kilograms,
                         groupValue: controller.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {
+                          if (inputValue == null) return;
                           setState(() {
                             controller.value = inputValue;
+                            settingsRepository.updateSettings(
+                              weightMetricsSettings: inputValue,
+                            );
                           });
                         },
                       ),

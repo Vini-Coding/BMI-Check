@@ -1,4 +1,3 @@
-import 'package:bmi_check/app/mobile/home/page/home_page.dart';
 import 'package:bmi_check/app/mobile/components/general_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,6 +8,7 @@ class IntroPageWidget extends StatelessWidget {
     required this.imagePath,
     required this.title,
     required this.bodyText,
+    required this.onPressed,
     super.key,
   });
 
@@ -16,14 +16,11 @@ class IntroPageWidget extends StatelessWidget {
   final String title;
   final String bodyText;
   final bool isLastPage;
+  final Future<void> Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-
-    void goToHome() {
-      Navigator.pushReplacementNamed(context, HomePage.routeName);
-    }
 
     if (isLastPage) {
       return Center(
@@ -52,7 +49,7 @@ class IntroPageWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: GeneralButtonWidget(
-                onPressed: goToHome,
+                onPressed: onPressed,
                 text: AppLocalizations.of(context)!.getStartedButton,
               ),
             ),

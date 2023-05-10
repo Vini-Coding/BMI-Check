@@ -1,5 +1,7 @@
 import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_theme/settings_theme_controller.dart';
+import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
+import 'package:bmi_check/app/shared/preferences/repository/app_settings_repository.dart';
 import 'package:bmi_check/app/shared/themes/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,6 +17,8 @@ class SettingsThemePage extends StatefulWidget {
 }
 
 class _SettingsThemePageState extends State<SettingsThemePage> {
+  final IAppSettingsRepository settingsRepository =
+      Injector.appInstance.get<IAppSettingsRepository>();
   final ThemeController themeController =
       Injector.appInstance.get<ThemeController>();
   final SettingsThemeController settingsThemeController =
@@ -53,56 +57,77 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
                               ),
                             ),
                           ),
-                          Text(AppLocalizations.of(context)!.themeSettingsPageTitle,
-                              style: textTheme.displayLarge),
+                          Text(
+                            AppLocalizations.of(context)!
+                                .themeSettingsPageTitle,
+                            style: textTheme.displayLarge,
+                          ),
                         ],
                       ),
                       const SizedBox(height: 80),
-                      RadioListTile(
+                      RadioListTile<ThemeMode>(
                         title: Text(
                           AppLocalizations.of(context)!.pageTileSystemDefault,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 1,
+                        value: ThemeMode.system,
                         groupValue: settingsThemeController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
-                          setState(() {
-                            settingsThemeController.value = val;
-                            themeController.getThemeSystem();
-                          });
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
+                          setState(
+                            () {
+                              settingsThemeController.value = inputValue;
+                              themeController.getThemeSystem();
+                              settingsRepository.updateSettings(
+                                themeSettings: inputValue,
+                              );
+                            },
+                          );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<ThemeMode>(
                         title: Text(
                           AppLocalizations.of(context)!.themeSettingsPageTile2,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 2,
+                        value: ThemeMode.light,
                         groupValue: settingsThemeController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
-                          setState(() {
-                            settingsThemeController.value = val;
-                            themeController.toggleTheme(false);
-                          });
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
+                          setState(
+                            () {
+                              settingsThemeController.value = inputValue;
+                              themeController.toggleTheme(false);
+                              settingsRepository.updateSettings(
+                                themeSettings: inputValue,
+                              );
+                            },
+                          );
                         },
                       ),
                       const SizedBox(height: 10),
-                      RadioListTile(
+                      RadioListTile<ThemeMode>(
                         title: Text(
                           AppLocalizations.of(context)!.themeSettingsPageTile3,
                           style: textTheme.bodyMedium,
                         ),
-                        value: 3,
+                        value: ThemeMode.dark,
                         groupValue: settingsThemeController.value,
                         activeColor: colorScheme.primary,
-                        onChanged: (val) {
-                          setState(() {
-                            settingsThemeController.value = val;
-                            themeController.toggleTheme(true);
-                          });
+                        onChanged: (inputValue) {
+                          if (inputValue == null) return;
+                          setState(
+                            () {
+                              settingsThemeController.value = inputValue;
+                              themeController.toggleTheme(true);
+                              settingsRepository.updateSettings(
+                                themeSettings: inputValue,
+                              );
+                            },
+                          );
                         },
                       ),
                     ],
