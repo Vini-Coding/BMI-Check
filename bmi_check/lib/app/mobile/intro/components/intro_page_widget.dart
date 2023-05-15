@@ -24,6 +24,7 @@ class IntroPageWidget extends StatelessWidget {
 
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const SizedBox(height: 80),
           Image.asset(
@@ -53,6 +54,7 @@ class IntroPageWidget extends StatelessWidget {
                 text: AppLocalizations.of(context)!.getStartedButton,
               ),
             ),
+          const SizedBox(height: 80),
         ],
       ),
     );
