@@ -1,4 +1,3 @@
-import 'package:bmi_check/app/mobile/home/page/home_page.dart';
 import 'package:bmi_check/app/mobile/settings/components/settings_list_tile_widget.dart';
 import 'package:bmi_check/app/mobile/settings/settings_height/page/settings_height_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/page/settings_language_page.dart';
@@ -22,7 +21,7 @@ class _SettingsPageState extends State<SettingsPage> {
     TextTheme textTheme = Theme.of(context).textTheme;
 
     void goToHome() {
-      Navigator.pushReplacementNamed(context, HomePage.routeName);
+      Navigator.pop(context);
     }
 
     return Scaffold(
@@ -59,7 +58,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         title:
                             AppLocalizations.of(context)!.heightMetricsListTile,
                         onTap: () {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                             context,
                             SettingsHeightPage.routeName,
                           );
@@ -70,7 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         title:
                             AppLocalizations.of(context)!.weightMetricsListTile,
                         onTap: () {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                             context,
                             SettingsWeightPage.routeName,
                           );
@@ -81,7 +80,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         title: AppLocalizations.of(context)!
                             .languageSettingsListTile,
                         onTap: () {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                             context,
                             SettingsLanguagePage.routeName,
                           );
@@ -92,7 +91,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         title:
                             AppLocalizations.of(context)!.themeSettingsListTile,
                         onTap: () {
-                          Navigator.pushReplacementNamed(
+                          Navigator.pushNamed(
                             context,
                             SettingsThemePage.routeName,
                           );

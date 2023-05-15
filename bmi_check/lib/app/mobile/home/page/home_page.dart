@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     TextTheme textTheme = Theme.of(context).textTheme;
 
     void goToResult() {
-      Navigator.pushReplacementNamed(
+      Navigator.pushNamed(
         context,
         ResultPage.routeName,
         arguments: ResultArguments(
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     void goToSettings() {
-      Navigator.pushReplacementNamed(context, SettingsPage.routeName);
+      Navigator.pushNamed(context, SettingsPage.routeName);
     }
 
     return Scaffold(

@@ -1,4 +1,3 @@
-import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_weight/controller/settings_weight_controller.dart';
 import 'package:bmi_check/app/mobile/settings/settings_weight/enum/weight_metrics_enum.dart';
 import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
@@ -27,7 +26,7 @@ class _SettingsWeightPageState extends State<SettingsWeightPage> {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     void goToSettings() {
-      Navigator.pushReplacementNamed(context, SettingsPage.routeName);
+      Navigator.pop(context);
     }
 
     return Scaffold(

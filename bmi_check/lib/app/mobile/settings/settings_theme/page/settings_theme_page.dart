@@ -1,4 +1,3 @@
-import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_theme/controller/settings_theme_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
 import 'package:bmi_check/app/shared/themes/theme_controller.dart';
@@ -29,7 +28,7 @@ class _SettingsThemePageState extends State<SettingsThemePage> {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     void goToSettings() {
-      Navigator.pushReplacementNamed(context, SettingsPage.routeName);
+      Navigator.pop(context);
     }
 
     return Scaffold(

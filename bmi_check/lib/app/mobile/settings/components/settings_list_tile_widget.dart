@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SettingsListTileWidget extends StatelessWidget {
-  const SettingsListTileWidget({required this.icon, required this.title, required this.onTap, super.key});
+  const SettingsListTileWidget({
+    required this.icon,
+    required this.title,
+    required this.onTap,
+    super.key,
+  });
   final IconData icon;
   final String title;
   final Function()? onTap;

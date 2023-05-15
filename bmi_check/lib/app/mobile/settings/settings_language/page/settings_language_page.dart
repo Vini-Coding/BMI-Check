@@ -1,4 +1,3 @@
-import 'package:bmi_check/app/mobile/settings/page/settings_page.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/language_controller.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/settings_language_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
@@ -30,7 +29,7 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     void goToSettings() {
-      Navigator.pushReplacementNamed(context, SettingsPage.routeName);
+      Navigator.pop(context);
     }
 
     return Scaffold(
