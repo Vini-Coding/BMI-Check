@@ -54,7 +54,7 @@ class IntroPageWidget extends StatelessWidget {
                 text: AppLocalizations.of(context)!.getStartedButton,
               ),
             ),
-          const SizedBox(height: 80),
+          const SizedBox(height: 64),
         ],
       ),
     );
