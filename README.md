@@ -14,14 +14,14 @@ Welcome to **BMI Check!** With BMI Check you can calculate your *body mass index
 
 ## How to use
 1. To use this application, first you must clone this repository. You can clone with the following command line:
-´´´
+```
 git clone https://github.com/Vini-Coding/BMI-Check
-´´´
+```
 2. Second you have to open the project in your File Explorer.
 3. Then, download the apk file in the following path:
-´´´
+```
 bmi-check/build/app/outputs/release/app-release.apk
-´´´
+```
 
 ## Technical Features
 - introduction_screen package for Intro Pages.
