@@ -34,6 +34,7 @@ bmi-check/build/app/outputs/release/app-release.apk
 - Full Internationalization of the app with flutter_localizations package.
 - Share Feature with share_plus package.
 - Repository and Models implementing SharedPreferences for Local Storage.
+- Following Clean Code Principles
 
 ## Important Links 
 - APK: 
