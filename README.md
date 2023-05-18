@@ -34,6 +34,7 @@ bmi-check/build/app/outputs/release/app-release.apk
 ```
 
 ## Technical Features
+This is a Flutter Project developed for Learning goals.
 - introduction_screen package for Intro Pages.
 - Navigation with Named Routes and Arguments.
 - State Management by ValueNotifier and ChangeNotifier.
