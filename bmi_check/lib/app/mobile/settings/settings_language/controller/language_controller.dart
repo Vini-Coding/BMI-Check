@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:bmi_check/app/shared/l10n/l10n.dart';
 
@@ -15,6 +17,6 @@ class LanguageController extends ValueNotifier<Locale> {
   }
 
   void setSystemLocale() {
-    value = WidgetsBinding.instance.window.locale;
+    value = PlatformDispatcher.instance.locale;
   }
 }
