@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/language_controller.dart';
 import 'package:bmi_check/app/mobile/settings/settings_language/controller/settings_language_controller.dart';
 import 'package:bmi_check/app/shared/interfaces/app_settings_repository_interface.dart';
@@ -68,7 +70,7 @@ class _SettingsLanguagePageState extends State<SettingsLanguagePage> {
                           AppLocalizations.of(context)!.pageTileSystemDefault,
                           style: textTheme.bodyMedium,
                         ),
-                        value: WidgetsBinding.instance.window.locale,
+                        value: PlatformDispatcher.instance.locale,
                         groupValue: settingsLanguageController.value,
                         activeColor: colorScheme.primary,
                         onChanged: (inputValue) {

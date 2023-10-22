@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:bmi_check/app/mobile/settings/settings_height/enum/height_metrics_enum.dart';
 import 'package:bmi_check/app/mobile/settings/settings_weight/enum/weight_metrics_enum.dart';
 import 'package:bmi_check/app/shared/exceptions/unexpected_value_exception.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AppSettingsModel {
@@ -78,8 +79,8 @@ class AppSettingsModel {
     }
     Locale languageSettings;
     switch (map['languageSettings']) {
-      case 'WidgetsBinding.instance.window.locale':
-        languageSettings = WidgetsBinding.instance.window.locale;
+      case 'PlatformDispatcher.instance.locale':
+        languageSettings = PlatformDispatcher.instance.locale;
         break;
       case 'zh':
         languageSettings = const Locale('zh');
